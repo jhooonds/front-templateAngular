@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
-import { Cidade } from 'src/app/model/cidade';
+import { Cidade } from 'app/model/cidade';
 
 
 const httpOptions = {

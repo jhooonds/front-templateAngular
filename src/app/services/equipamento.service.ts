@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
-import { Equipamento } from 'src/app/model/equipamento';
+import { Equipamento } from 'app/model/equipamento';
 
 
 const httpOptions = {

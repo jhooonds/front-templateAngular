@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
-import { PessoaJuridica } from 'src/app/model/pessoa-juridica';
+import { PessoaJuridica } from 'app/model/pessoa-juridica';
 
 
 const httpOptions = {
