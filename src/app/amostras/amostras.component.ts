@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AmostrasComponent implements OnInit {
 
   constructor() { }
-
+//kevin
   ngOnInit() {
   }
 
