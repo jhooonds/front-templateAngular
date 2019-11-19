@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './clientes/user-profile.component';
 import { ClientesAddComponent } from './clientes/clientes-add/clientes-add.component';
+import { AmostrasComponent } from './amostras/amostras.component';
+import { AmostrasAddComponent } from './amostras/amostras-add/amostras-add.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
@@ -20,7 +22,6 @@ import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { AgmCoreModule } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { AmostrasComponent } from './amostras/amostras.component';
 
 @NgModule({
   imports: [

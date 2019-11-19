@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-amostras',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AmostrasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 //kevin
+
+newAmostra() {
+  this.router.navigate(['/amostras-add'])
+}
   ngOnInit() {
+   
   }
 
 }

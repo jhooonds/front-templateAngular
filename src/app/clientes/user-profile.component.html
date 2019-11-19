@@ -1,7 +1,7 @@
 <div class="main-content">
   <div class="container-fluid">
       <div class="row">
-          <button mat-raised-button color="warn"type="submit" (click)="newClient()">Novo Cliente</button>
+          <button mat-raised-button color="primary"type="submit" (click)="newClient()">Novo Cliente</button>
       </div>
       <div class="row">
           <div class="col-md-12">
@@ -9,7 +9,7 @@
                   <div class="card-header card-header-danger">
                       <h4 class="card-title ">Clientes</h4>
                   </div>
-                  <div class="card-body">
+                  <div class="card-body" ngfor>
                       <div class="table-responsive">
                           <table class="table">
                               <thead class=" text-primary">
