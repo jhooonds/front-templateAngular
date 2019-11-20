@@ -3,7 +3,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Amostra } from 'app/model/amostra';
-
+import { HttpModule } from '@angular/http';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
