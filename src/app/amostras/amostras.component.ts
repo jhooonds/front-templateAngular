@@ -19,14 +19,7 @@ newAmostra() {
 }
   ngOnInit() {
     this._api.getAmostras()
-    .subscribe(res => {
-      this.dataSource = res;
-      console.log(this.dataSource);
-    }, err => {
-      console.log(err);
-    });
-    
-  }
-  
-
+    .subscribe(res =>
+      this.dataSource = res);
+      }
 }

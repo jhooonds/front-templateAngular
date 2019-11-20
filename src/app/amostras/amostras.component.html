@@ -29,19 +29,19 @@
                                         Observação
                                     </th>
                                 </thead>
-                                <tbody>
-                                    <tr>
+                                <tbody >
+                                    <tr *ngFor="let a of dataSource">
                                         <td>
-                                            1
+                                            {{dataSource.codigo}}
                                         </td>
                                         <td>
-                                            Dakota Rice
+                                            {{dataSource.cliente}}
                                         </td>
                                         <td>
-                                            Niger
+                                            {{dataSource.endereco}}
                                         </td>
                                         <td>
-                                            Oud-Turnhout
+                                            {{dataSource.observacao}}
                                         </td>
                                     </tr>
                                 </tbody>
