@@ -20,6 +20,6 @@ newAmostra() {
   ngOnInit() {
     this._api.getAmostras()
     .subscribe(res =>
-      this.dataSource = res);
-      }
+      this.dataSource = res)
+  }
 }

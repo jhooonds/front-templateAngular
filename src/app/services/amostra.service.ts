@@ -8,7 +8,7 @@ import { HttpModule } from '@angular/http';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = 'http://localhost:8080/MyLab/api/amostra';
+const apiUrl = 'http://10.10.102.1:8080/MyLab/api/amostra';
 
 @Injectable({
   providedIn: 'root'
