@@ -11,7 +11,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   newClient() {
-      this.router.navigate(['/user-profile/clientes-add'])
+      this.router.navigate(['/clientes-add'])
   }
 
   ngOnInit() {

@@ -20,9 +20,10 @@ import {
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDatepickerModule,
 } from '@angular/material';
-import { from } from 'rxjs';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -35,6 +36,7 @@ import { from } from 'rxjs';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatDatepickerModule
   ],
   declarations: [
     DashboardComponent,
