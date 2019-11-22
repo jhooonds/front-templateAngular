@@ -7,5 +7,5 @@ export class Amostra {
     dt_amostra: String;
     observacao: String;
     cliente: Cliente;
-    endereco: Endereco;
+    endereco: Endereco = new Endereco();
 }

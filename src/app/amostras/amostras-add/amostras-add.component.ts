@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Amostra } from 'app/model/amostra';
+import { AmostraService } from 'app/services/amostra.service';
 
 @Component({
   selector: 'app-amostras-add',
@@ -7,14 +9,31 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./amostras-add.component.scss']
 })
 export class AmostrasAddComponent implements OnInit {
-
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  amostra: Amostra;
+  constructor(private route: ActivatedRoute, private router: Router, private _api: AmostraService) { }
 
   backInitial(){
     this.router.navigate(['/amostras']);
   }
 
   ngOnInit() {
+    this.amostra = new Amostra();
+  }
+
+  enviarAmostra(){
+    this.amostra.id = null;
+    this.amostra.cliente = null;
+    console.log(this.amostra);
+
+    this._api.addAmostra(this.amostra);
+    
+      this._api.addAmostra(this.amostra)
+        .subscribe(res => {
+            console.log(res);
+          }, (err) => {
+            console.log(err);
+          });
+
   }
 
 }

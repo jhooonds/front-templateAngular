@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AmostraService } from '../services/amostra.service'
 import { Amostra } from 'app/model/amostra';
+import { Cliente } from 'app/model/cliente';
 
 @Component({
   selector: 'app-amostras',
@@ -21,5 +22,10 @@ newAmostra() {
     this._api.getAmostras()
     .subscribe(res =>
       this.dataSource = res)
+  }
+
+  formataCliente(cliente: Cliente){
+   // return cliente.pessoa.nome +  ' - ' +  cliente.codigo;
+   return 'test';
   }
 }

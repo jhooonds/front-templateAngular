@@ -16,50 +16,21 @@
                               </div>
                               <div class="col-md-3">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Username">
+                                    <input [(ngModel)]="amostra.codigo" name="amostraCodigo" matInput placeholder="Codigo">
                                   </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="E-mail" type="email">
+                                    <input [(ngModel)]="amostra.dt_amostra" name="amostraCodigo" matInput placeholder="Data coleta" type="email">
                                   </mat-form-field>
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Primeiro Nome" type="text">
+                                  <input matInput placeholder="Estado" type="text">
                                 </mat-form-field>
                               </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="SobreNome" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="CPF" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-5">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Rua" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-5">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Bairro" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-2">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Nยบ" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="Cidade" type="text">
@@ -67,16 +38,35 @@
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Pais" type="text">
+                                  <input [(ngModel)]="amostra.endereco.cep" name="amostraCep" matInput placeholder="CEP" type="text">
                                 </mat-form-field>
                               </div>
-                              <div class="col-md-4">
+                          </div>
+                          <div class="row">
+                              <div class="col-md-8">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="CEP" type="text">
+                                  <input [(ngModel)]="amostra.endereco.logradouro" name="amostraLogradouro" matInput placeholder="Logradouro" type="text">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-2">
+                                <mat-form-field class="example-full-width">
+                                  <input [(ngModel)]="amostra.endereco.complemento" name="amostraComplemento" matInput placeholder="Complemento" type="text">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-2">
+                                <mat-form-field class="example-full-width">
+                                  <input [(ngModel)]="amostra.endereco.numero" name="amostraNumero" matInput placeholder="Número" type="text">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                  <input [(ngModel)]="amostra.endereco.observacao" name="amostraObservacao" matInput placeholder="Observação" type="text">
                                 </mat-form-field>
                               </div>
                           </div>                         
-                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">SALVAR</button>
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="enviarAmostra()">SALVAR</button>
                           <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="backInitial()">CANCELAR</button>
                           <div class="clearfix"></div>
                       </form>
