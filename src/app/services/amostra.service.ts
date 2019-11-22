@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Amostra } from 'app/model/amostra';
 import { HttpModule } from '@angular/http';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
 };
 const apiUrl = 'http://localhost:8080/MyLab/api/amostra';
 
@@ -34,7 +34,10 @@ export class AmostraService {
   }
 
   addAmostra (amostra: Amostra): Observable<Amostra> {
-    return this.http.post<Amostra>(apiUrl, amostra, httpOptions).pipe(
+    console.log(JSON.stringify(amostra));
+    let params = new HttpParams();
+    params = params.append('dado', JSON.stringify(amostra));
+    return this.http.post<Amostra>(apiUrl, {params: params}, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((amostra: Amostra) => console.log(`adicionou o amostra com w/ id=${amostra.id}`)),
       catchError(this.handleError<Amostra>('addAmostra'))
