@@ -5,9 +5,6 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { Amostra } from 'app/model/amostra';
 import { HttpModule } from '@angular/http';
 
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
-};
 const apiUrl = 'http://localhost:8080/MyLab/api/amostra';
 
 @Injectable({
@@ -18,6 +15,9 @@ export class AmostraService {
   constructor(private http: HttpClient) { }
 
   getAmostras (): Observable<Amostra[]> {
+    let httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+    };
     return this.http.get<Amostra[]>(apiUrl)
       .pipe(
         tap(amostras => console.log('leu os amostras')),
@@ -26,6 +26,9 @@ export class AmostraService {
   }
 
   getAmostra(id: number): Observable<Amostra> {
+    let httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+    };
     const url = `${apiUrl}/${id}`;
     return this.http.get<Amostra>(url).pipe(
       tap(_ => console.log(`leu o amostra id=${id}`)),
@@ -35,9 +38,12 @@ export class AmostraService {
 
   addAmostra (amostra: Amostra): Observable<Amostra> {
     console.log(JSON.stringify(amostra));
-    let params = new HttpParams();
-    params = params.append('dado', JSON.stringify(amostra));
-    return this.http.post<Amostra>(apiUrl, {params: params}, httpOptions).pipe(
+    let httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(amostra))
+    };
+    
+    return this.http.post<Amostra>(apiUrl, amostra, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((amostra: Amostra) => console.log(`adicionou o amostra com w/ id=${amostra.id}`)),
       catchError(this.handleError<Amostra>('addAmostra'))
@@ -45,6 +51,10 @@ export class AmostraService {
   }
 
   updateAmostra(amostra: Amostra): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(amostra))
+    };
     return this.http.put(apiUrl, amostra, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${amostra.id}`)),
       catchError(this.handleError<any>('updateAmostra'))
@@ -52,6 +62,10 @@ export class AmostraService {
   }
 
   deleteAmostra (amostra: Amostra): Observable<Amostra> {
+    let httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(amostra))
+    };
     const url = `${apiUrl}/${amostra.id}`;
 
     return this.http.delete<Amostra>(url, httpOptions).pipe(

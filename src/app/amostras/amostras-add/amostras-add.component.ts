@@ -23,7 +23,7 @@ export class AmostrasAddComponent implements OnInit {
   enviarAmostra(){
     this.amostra.id = null;
     this.amostra.cliente = null;
-    console.log(this.amostra);
+    this.amostra.endereco.cidade = null;
 
     this._api.addAmostra(this.amostra);
     
