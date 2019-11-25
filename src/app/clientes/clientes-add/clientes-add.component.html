@@ -31,7 +31,7 @@
                 </div> -->
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="CPF"  name="clienteCpf" type="text">
+                    <input matInput placeholder="CPF" name="clienteCpf" type="text">
                   </mat-form-field>
                 </div>
               </div>
@@ -69,8 +69,10 @@
                   </mat-form-field>
                 </div>
               </div>
-              <button mat-raised-button type="submit" class="btn btn-danger pull-right">SALVAR</button>
-              <button mat-raised-button type="submit" class="btn btn-danger pull-right">CANCELAR</button>
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right">
+                <i class="material-icons">send</i> SALVAR</button>
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="backList()">
+                <i class="material-icons">backspace</i> CANCELAR</button>
               <div class="clearfix"></div>
             </form>
           </div>

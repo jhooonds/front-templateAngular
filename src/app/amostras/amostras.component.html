@@ -1,7 +1,9 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <button mat-raised-button color="warn" type="submit" (click)="newAmostra()">Nova Amostra</button>
+            <button mat-raised-button color="warn" type="submit" (click)="newAmostra()">Nova Amostra
+                <i class="material-icons">add</i>
+            </button>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -30,12 +32,14 @@
                                     </th>
 
                                     <th>
-                                        <button mat-raised-button type="button" matTooltip="Editar " [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                        <button mat-raised-button type="button" matTooltip="Editar "
+                                            [matTooltipPosition]="'above'"
+                                            class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">edit</i>
                                         </button>
                                     </th>
                                 </thead>
-                                <tbody >
+                                <tbody>
                                     <tr *ngFor="let a of dataSource">
                                         <td>
                                             {{a.codigo}}
