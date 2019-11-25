@@ -8,11 +8,8 @@ import { UserProfileComponent } from '../../clientes/user-profile.component';
 import { ClientesAddComponent } from '../../clientes/clientes-add/clientes-add.component'
 import { AmostrasComponent } from '../../amostras/amostras.component';
 import { AmostrasAddComponent } from '../../amostras/amostras-add/amostras-add.component';
-import { TableListComponent } from '../../table-list/table-list.component';
-import { TypographyComponent } from '../../typography/typography.component';
-import { IconsComponent } from '../../icons/icons.component';
-import { MapsComponent } from '../../maps/maps.component';
-import { NotificationsComponent } from '../../notifications/notifications.component';
+import { EquipamentosComponent } from '../../equipamentos/equipamentos.component';
+import { EquipamentosAddComponent } from '../../equipamentos/equipamentos-add/equipamentos-add.component';
 
 import {
   MatButtonModule,
@@ -44,11 +41,8 @@ import {
     ClientesAddComponent,
     AmostrasComponent,
     AmostrasAddComponent,
-    TableListComponent,
-    TypographyComponent,
-    IconsComponent,
-    MapsComponent,
-    NotificationsComponent,
+    EquipamentosComponent,
+    EquipamentosAddComponent,
   ]
 })
 

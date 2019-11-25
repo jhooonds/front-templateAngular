@@ -22,50 +22,50 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                   <mat-form-field>
-                    <input matInput [matDatepicker]="picker1" placeholder="Angular forms" [formControl]="date">
-                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                    <mat-datepicker #picker1></mat-datepicker>
-                  </mat-form-field>
-                </div>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                  </mat-form-field>                  
+                </div> -->
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="CPF" type="text">
+                    <input matInput placeholder="CPF"  name="clienteCpf" type="text">
                   </mat-form-field>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-5">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Rua" type="text">
+                    <input matInput placeholder="Rua" name="clienteRua" type="text">
                   </mat-form-field>
                 </div>
                 <div class="col-md-5">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Bairro" type="text">
+                    <input matInput placeholder="Bairro" name="clienteBairro" type="text">
                   </mat-form-field>
                 </div>
                 <div class="col-md-2">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Nº" type="text">
+                    <input matInput placeholder="Nº" name="clienteNúmero" type="text">
                   </mat-form-field>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Cidade" type="text">
+                    <input matInput placeholder="Cidade" name="clienteCity" type="text">
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Pais" type="text">
+                    <input matInput placeholder="Pais" name="clientePais" type="text">
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="CEP" type="text">
+                    <input matInput placeholder="CEP" name="clienteCEP" type="text">
                   </mat-form-field>
                 </div>
               </div>
