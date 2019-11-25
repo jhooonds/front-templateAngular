@@ -1,3 +1,50 @@
-<p>
-  equipamentos-add works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Novo Equipamento</h4>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-5">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Nome" name="equipNome" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-5">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Serial" name="equipSerial" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-2">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Firmware Version" name="equipFw" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Hardware Version" name="equipHw" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div>
+                <button mat-raised-button type="submit" class="btn btn-danger pull-right">
+                  <i class="material-icons">send</i> SALVAR</button>
+                <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="backList()">
+                  <i class="material-icons">backspace</i> CANCELAR</button>
+                <div class="clearfix">
+
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

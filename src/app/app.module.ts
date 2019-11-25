@@ -20,6 +20,10 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { HttpClientModule } from '@angular/common/http';
 import { EquipamentosComponent } from './equipamentos/equipamentos.component';
 import { EquipamentosAddComponent } from './equipamentos/equipamentos-add/equipamentos-add.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { UsuarioAddComponent } from './usuarios/usuario-add/usuario-add.component';
+import { CalibracaoComponent } from './calibracao/calibracao.component';
+import { CalibracaoAddComponent } from './calibracao/calibracao-add/calibracao-add.component';
 
 @NgModule({
   imports: [
@@ -37,7 +41,11 @@ import { EquipamentosAddComponent } from './equipamentos/equipamentos-add/equipa
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    UsuariosComponent,
+    UsuarioAddComponent,
+    CalibracaoComponent,
+    CalibracaoAddComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
