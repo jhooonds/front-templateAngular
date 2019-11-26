@@ -12,9 +12,8 @@
                 <div class="col-md-5">
                     <mat-form-field>
                         <mat-label>Selecione o Cliente</mat-label>
-                        <select matNativeControl id="mySelectId">
-                          <option value="" disabled selected></option>
-                          <option value="cliente1">Cliente 1</option>
+                        <select [(ngModel)]="cliente" name="cliente" matNativeControl id="mySelectId">
+                          <option *ngFor="let c of clientes" [ngValue]="c">{{ c.pessoa.nome }}</option>
                         </select>
                       </mat-form-field>
                 </div>
@@ -34,16 +33,16 @@
                 <div class="col-md-4">
                     <mat-form-field>
                         <mat-label>Estado</mat-label>
-                        <select matNativeControl required>
-                          <option value="br">SC</option>
+                        <select [(ngModel)]="estado" name="estado" matNativeControl required >
+                          <option *ngFor="let e of estados" [ngValue]="e">{{ e.nome }}</option>
                         </select>
                       </mat-form-field>
                 </div>
                 <div class="col-md-4">
                     <mat-form-field>
                         <mat-label>Cidade</mat-label>
-                        <select matNativeControl required>
-                          <option value="br">Florianópolis</option>
+                        <select [(ngModel)]="cidade" name="cidade" matNativeControl required >
+                          <option *ngFor="let c of cidades" [ngValue]="c">{{ c.nome }}</option>
                         </select>
                       </mat-form-field>
                 </div>
