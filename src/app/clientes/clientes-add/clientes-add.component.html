@@ -22,6 +22,16 @@
                 </div>
               </div>
               <div class="row">
+                  <div class="col-md-4">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Nome" name="clienteNome" type="text">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="Email" name="clienteEmail" type="text">
+                        </mat-form-field>
+                      </div>
                 <!-- <div class="col-md-4">
                   <mat-form-field>
                     <input matInput [matDatepicker]="picker" placeholder="Choose a date">
@@ -54,14 +64,26 @@
               </div>
               <div class="row">
                 <div class="col-md-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Cidade" name="clienteCity" type="text">
+                  <mat-form-field>
+                    <mat-label>Cidade</mat-label>
+                    <select matNativeControl required>
+                      <option value="volvo">Florianópolis/SC</option>
+                      <option value="saab">Joinville/SC</option>
+                      <option value="mercedes">Palhoça/SC</option>
+                      <option value="audi">São José/SC</option>
+                    </select>
                   </mat-form-field>
                 </div>
-                <div class="col-md-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Pais" name="clientePais" type="text">
-                  </mat-form-field>
+                <div class="col-md-4">                 
+                  <mat-form-field>
+                    <mat-label>País</mat-label>
+                    <select matNativeControl required>
+                      <option value="volvo">Brasil</option>
+                      <option value="saab">Marrocos</option>
+                      <option value="mercedes">EUA</option>
+                      <option value="audi">Canada</option>
+                    </select>
+                  </mat-form-field>                
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
