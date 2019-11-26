@@ -24,6 +24,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuarioAddComponent } from './usuarios/usuario-add/usuario-add.component';
 import { CalibracaoComponent } from './calibracao/calibracao.component';
 import { CalibracaoAddComponent } from './calibracao/calibracao-add/calibracao-add.component';
+import { LoginComponent } from './login/login.component';
+import { RecoveryPasswordComponent } from './login/recovery-password/recovery-password.component';
 
 @NgModule({
   imports: [
@@ -45,7 +47,9 @@ import { CalibracaoAddComponent } from './calibracao/calibracao-add/calibracao-a
     UsuariosComponent,
     UsuarioAddComponent,
     CalibracaoComponent,
-    CalibracaoAddComponent
+    CalibracaoAddComponent,
+    LoginComponent,
+    RecoveryPasswordComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
