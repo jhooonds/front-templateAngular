@@ -10,9 +10,13 @@
             <form>
               <div class="row">
                 <div class="col-md-5">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Cliente(Empresa) (disabled)" disabled>
-                  </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Selecione o Cliente</mat-label>
+                        <select matNativeControl id="mySelectId">
+                          <option value="" disabled selected></option>
+                          <option value="cliente1">Cliente 1</option>
+                        </select>
+                      </mat-form-field>
                 </div>
                 <div class="col-md-3">
                   <mat-form-field class="example-full-width">
@@ -28,14 +32,20 @@
               </div>
               <div class="row">
                 <div class="col-md-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Estado" type="text">
-                  </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Estado</mat-label>
+                        <select matNativeControl required>
+                          <option value="br">SC</option>
+                        </select>
+                      </mat-form-field>
                 </div>
                 <div class="col-md-4">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Cidade" type="text">
-                  </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Cidade</mat-label>
+                        <select matNativeControl required>
+                          <option value="br">Florianópolis</option>
+                        </select>
+                      </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">

@@ -9,29 +9,28 @@
           <div class="card-body">
             <form>
               <div class="row">
-                <div class="col-md-2">
-                  <h4>Defina Pessoa</h4>
+                <div class="col-md-4">
                   <mat-form-field>
-                    <mat-label>Juridica/Fisica</mat-label>
-                    <mat-select>
-                      <mat-option *ngFor="let food of foods" [value]="food.value">
-                        {{food.viewValue}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
+                  <mat-label>Selecione Tipo Cliente</mat-label>
+                  <select matNativeControl id="mySelectId">
+                    <option value="" disabled selected></option>
+                    <option value="cliente1">Juridica</option>
+                    <option value="cliente1">Fisica</option>
+                  </select>
+                </mat-form-field>
                 </div>
               </div>
               <div class="row">
-                  <div class="col-md-4">
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Nome" name="clienteNome" type="text">
-                      </mat-form-field>
-                    </div>
-                    <div class="col-md-4">
-                        <mat-form-field class="example-full-width">
-                          <input matInput placeholder="Email" name="clienteEmail" type="text">
-                        </mat-form-field>
-                      </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Nome" name="clienteNome" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Email" name="clienteEmail" type="text">
+                  </mat-form-field>
+                </div>
                 <!-- <div class="col-md-4">
                   <mat-form-field>
                     <input matInput [matDatepicker]="picker" placeholder="Choose a date">
@@ -46,50 +45,44 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-5">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Rua" name="clienteRua" type="text">
+                <div class="col-md-4">
+                  <mat-form-field>
+                    <mat-label>Estado</mat-label>
+                    <select matNativeControl required>
+                      <option value="br">SC</option>
+                    </select>
                   </mat-form-field>
                 </div>
-                <div class="col-md-5">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Bairro" name="clienteBairro" type="text">
-                  </mat-form-field>
-                </div>
-                <div class="col-md-2">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Nº" name="clienteNúmero" type="text">
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="row">
                 <div class="col-md-4">
                   <mat-form-field>
                     <mat-label>Cidade</mat-label>
                     <select matNativeControl required>
-                      <option value="volvo">Florianópolis/SC</option>
-                      <option value="saab">Joinville/SC</option>
-                      <option value="mercedes">Palhoça/SC</option>
-                      <option value="audi">São José/SC</option>
+                      <option value="city">Florianópolis</option>
                     </select>
                   </mat-form-field>
-                </div>
-                <div class="col-md-4">                 
-                  <mat-form-field>
-                    <mat-label>País</mat-label>
-                    <select matNativeControl required>
-                      <option value="volvo">Brasil</option>
-                      <option value="saab">Marrocos</option>
-                      <option value="mercedes">EUA</option>
-                      <option value="audi">Canada</option>
-                    </select>
-                  </mat-form-field>                
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
                     <input matInput placeholder="CEP" name="clienteCEP" type="text">
                   </mat-form-field>
                 </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Rua" name="clienteLogradouro" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="N°" name="clienteNumero" type="text">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Complemento" name="clienteComplemento" type="text">
+                      </mat-form-field>
+                    </div>
               </div>
               <button mat-raised-button type="submit" class="btn btn-danger pull-right">
                 <i class="material-icons">send</i> SALVAR</button>
