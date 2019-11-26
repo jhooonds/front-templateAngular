@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { PessoaFisica } from 'app/model/pessoa-fisica';
+import { HttpModule } from '@angular/http';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
-const apiUrl = 'http://localhost:8080/MyLab/api/pessoafisica';
+const apiUrl = 'http://localhost:8080/MyLab/api/pessoaFisica';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +18,7 @@ export class PessoaFisicaService {
     return this.http.get<PessoaFisica[]>(apiUrl)
       .pipe(
         tap(pessoaFisicas => console.log('leu os pessoaFisicas')),
-        catchError(this.handleError('getPessoaFisica', []))
+        catchError(this.handleError('getPessoaFisicas', []))
       );
   }
 
@@ -34,6 +31,10 @@ export class PessoaFisicaService {
   }
 
   addPessoaFisica (pessoaFisica: PessoaFisica): Observable<PessoaFisica> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(pessoaFisica))
+    };
     return this.http.post<PessoaFisica>(apiUrl, pessoaFisica, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((pessoaFisica: PessoaFisica) => console.log(`adicionou o pessoaFisica com w/ id=${pessoaFisica.id}`)),
@@ -42,6 +43,10 @@ export class PessoaFisicaService {
   }
 
   updatePessoaFisica(pessoaFisica: PessoaFisica): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(pessoaFisica))
+    };
     return this.http.put(apiUrl, pessoaFisica, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${pessoaFisica.id}`)),
       catchError(this.handleError<any>('updatePessoaFisica'))
@@ -49,6 +54,10 @@ export class PessoaFisicaService {
   }
 
   deletePessoaFisica (pessoaFisica: PessoaFisica): Observable<PessoaFisica> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(pessoaFisica))
+    };
     const url = `${apiUrl}/${pessoaFisica.id}`;
 
     return this.http.delete<PessoaFisica>(url, httpOptions).pipe(

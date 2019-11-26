@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Medicao } from 'app/model/medicao';
+import { HttpModule } from '@angular/http';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 const apiUrl = 'http://localhost:8080/MyLab/api/medicao';
 
 @Injectable({
@@ -21,7 +18,7 @@ export class MedicaoService {
     return this.http.get<Medicao[]>(apiUrl)
       .pipe(
         tap(medicaos => console.log('leu os medicaos')),
-        catchError(this.handleError('getMedicao', []))
+        catchError(this.handleError('getMedicaos', []))
       );
   }
 
@@ -34,6 +31,10 @@ export class MedicaoService {
   }
 
   addMedicao (medicao: Medicao): Observable<Medicao> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(medicao))
+    };
     return this.http.post<Medicao>(apiUrl, medicao, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((medicao: Medicao) => console.log(`adicionou o medicao com w/ id=${medicao.id}`)),
@@ -42,6 +43,10 @@ export class MedicaoService {
   }
 
   updateMedicao(medicao: Medicao): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(medicao))
+    };
     return this.http.put(apiUrl, medicao, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${medicao.id}`)),
       catchError(this.handleError<any>('updateMedicao'))
@@ -49,6 +54,10 @@ export class MedicaoService {
   }
 
   deleteMedicao (medicao: Medicao): Observable<Medicao> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(medicao))
+    };
     const url = `${apiUrl}/${medicao.id}`;
 
     return this.http.delete<Medicao>(url, httpOptions).pipe(

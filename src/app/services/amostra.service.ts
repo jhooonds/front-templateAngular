@@ -15,9 +15,6 @@ export class AmostraService {
   constructor(private http: HttpClient) { }
 
   getAmostras (): Observable<Amostra[]> {
-    let httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
-    };
     return this.http.get<Amostra[]>(apiUrl)
       .pipe(
         tap(amostras => console.log('leu os amostras')),
@@ -26,9 +23,6 @@ export class AmostraService {
   }
 
   getAmostra(id: number): Observable<Amostra> {
-    let httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
-    };
     const url = `${apiUrl}/${id}`;
     return this.http.get<Amostra>(url).pipe(
       tap(_ => console.log(`leu o amostra id=${id}`)),
@@ -37,12 +31,10 @@ export class AmostraService {
   }
 
   addAmostra (amostra: Amostra): Observable<Amostra> {
-    console.log(JSON.stringify(amostra));
-    let httpOptions = {
+    const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(amostra))
     };
-    
     return this.http.post<Amostra>(apiUrl, amostra, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((amostra: Amostra) => console.log(`adicionou o amostra com w/ id=${amostra.id}`)),
@@ -51,7 +43,7 @@ export class AmostraService {
   }
 
   updateAmostra(amostra: Amostra): Observable<any> {
-    let httpOptions = {
+    const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(amostra))
     };
@@ -62,7 +54,7 @@ export class AmostraService {
   }
 
   deleteAmostra (amostra: Amostra): Observable<Amostra> {
-    let httpOptions = {
+    const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(amostra))
     };

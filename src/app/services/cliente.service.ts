@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Cliente } from 'app/model/cliente';
+import { HttpModule } from '@angular/http';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 const apiUrl = 'http://localhost:8080/MyLab/api/cliente';
 
 @Injectable({
@@ -21,7 +18,7 @@ export class ClienteService {
     return this.http.get<Cliente[]>(apiUrl)
       .pipe(
         tap(clientes => console.log('leu os clientes')),
-        catchError(this.handleError('getCliente', []))
+        catchError(this.handleError('getClientes', []))
       );
   }
 
@@ -34,6 +31,10 @@ export class ClienteService {
   }
 
   addCliente (cliente: Cliente): Observable<Cliente> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(cliente))
+    };
     return this.http.post<Cliente>(apiUrl, cliente, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((cliente: Cliente) => console.log(`adicionou o cliente com w/ id=${cliente.id}`)),
@@ -42,6 +43,10 @@ export class ClienteService {
   }
 
   updateCliente(cliente: Cliente): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(cliente))
+    };
     return this.http.put(apiUrl, cliente, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${cliente.id}`)),
       catchError(this.handleError<any>('updateCliente'))
@@ -49,6 +54,10 @@ export class ClienteService {
   }
 
   deleteCliente (cliente: Cliente): Observable<Cliente> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(cliente))
+    };
     const url = `${apiUrl}/${cliente.id}`;
 
     return this.http.delete<Cliente>(url, httpOptions).pipe(

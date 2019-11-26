@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Perfil } from 'app/model/perfil';
+import { HttpModule } from '@angular/http';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 const apiUrl = 'http://localhost:8080/MyLab/api/perfil';
 
 @Injectable({
@@ -21,7 +18,7 @@ export class PerfilService {
     return this.http.get<Perfil[]>(apiUrl)
       .pipe(
         tap(perfils => console.log('leu os perfils')),
-        catchError(this.handleError('getPerfil', []))
+        catchError(this.handleError('getPerfils', []))
       );
   }
 
@@ -34,6 +31,10 @@ export class PerfilService {
   }
 
   addPerfil (perfil: Perfil): Observable<Perfil> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(perfil))
+    };
     return this.http.post<Perfil>(apiUrl, perfil, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((perfil: Perfil) => console.log(`adicionou o perfil com w/ id=${perfil.id}`)),
@@ -42,6 +43,10 @@ export class PerfilService {
   }
 
   updatePerfil(perfil: Perfil): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(perfil))
+    };
     return this.http.put(apiUrl, perfil, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${perfil.id}`)),
       catchError(this.handleError<any>('updatePerfil'))
@@ -49,6 +54,10 @@ export class PerfilService {
   }
 
   deletePerfil (perfil: Perfil): Observable<Perfil> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(perfil))
+    };
     const url = `${apiUrl}/${perfil.id}`;
 
     return this.http.delete<Perfil>(url, httpOptions).pipe(

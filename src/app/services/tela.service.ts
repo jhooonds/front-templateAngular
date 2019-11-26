@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Tela } from 'app/model/tela';
+import { HttpModule } from '@angular/http';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 const apiUrl = 'http://localhost:8080/MyLab/api/tela';
 
 @Injectable({
@@ -21,7 +18,7 @@ export class TelaService {
     return this.http.get<Tela[]>(apiUrl)
       .pipe(
         tap(telas => console.log('leu os telas')),
-        catchError(this.handleError('getTela', []))
+        catchError(this.handleError('getTelas', []))
       );
   }
 
@@ -34,6 +31,10 @@ export class TelaService {
   }
 
   addTela (tela: Tela): Observable<Tela> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(tela))
+    };
     return this.http.post<Tela>(apiUrl, tela, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((tela: Tela) => console.log(`adicionou o tela com w/ id=${tela.id}`)),
@@ -42,6 +43,10 @@ export class TelaService {
   }
 
   updateTela(tela: Tela): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(tela))
+    };
     return this.http.put(apiUrl, tela, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${tela.id}`)),
       catchError(this.handleError<any>('updateTela'))
@@ -49,6 +54,10 @@ export class TelaService {
   }
 
   deleteTela (tela: Tela): Observable<Tela> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(tela))
+    };
     const url = `${apiUrl}/${tela.id}`;
 
     return this.http.delete<Tela>(url, httpOptions).pipe(

@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { PessoaJuridica } from 'app/model/pessoa-juridica';
+import { HttpModule } from '@angular/http';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
-const apiUrl = 'http://localhost:8080/MyLab/api/pessoajuridica';
+const apiUrl = 'http://localhost:8080/MyLab/api/pessoaJuridica';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +18,7 @@ export class PessoaJuridicaService {
     return this.http.get<PessoaJuridica[]>(apiUrl)
       .pipe(
         tap(pessoaJuridicas => console.log('leu os pessoaJuridicas')),
-        catchError(this.handleError('getPessoaJuridica', []))
+        catchError(this.handleError('getPessoaJuridicas', []))
       );
   }
 
@@ -34,6 +31,10 @@ export class PessoaJuridicaService {
   }
 
   addPessoaJuridica (pessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(pessoaJuridica))
+    };
     return this.http.post<PessoaJuridica>(apiUrl, pessoaJuridica, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((pessoaJuridica: PessoaJuridica) => console.log(`adicionou o pessoaJuridica com w/ id=${pessoaJuridica.id}`)),
@@ -42,6 +43,10 @@ export class PessoaJuridicaService {
   }
 
   updatePessoaJuridica(pessoaJuridica: PessoaJuridica): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(pessoaJuridica))
+    };
     return this.http.put(apiUrl, pessoaJuridica, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${pessoaJuridica.id}`)),
       catchError(this.handleError<any>('updatePessoaJuridica'))
@@ -49,6 +54,10 @@ export class PessoaJuridicaService {
   }
 
   deletePessoaJuridica (pessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(pessoaJuridica))
+    };
     const url = `${apiUrl}/${pessoaJuridica.id}`;
 
     return this.http.delete<PessoaJuridica>(url, httpOptions).pipe(

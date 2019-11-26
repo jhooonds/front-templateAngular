@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Usuario } from 'app/model/usuario';
+import { HttpModule } from '@angular/http';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 const apiUrl = 'http://localhost:8080/MyLab/api/usuario';
 
 @Injectable({
@@ -21,7 +18,7 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(apiUrl)
       .pipe(
         tap(usuarios => console.log('leu os usuarios')),
-        catchError(this.handleError('getUsuario', []))
+        catchError(this.handleError('getUsuarios', []))
       );
   }
 
@@ -34,6 +31,10 @@ export class UsuarioService {
   }
 
   addUsuario (usuario: Usuario): Observable<Usuario> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(usuario))
+    };
     return this.http.post<Usuario>(apiUrl, usuario, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((usuario: Usuario) => console.log(`adicionou o usuario com w/ id=${usuario.id}`)),
@@ -42,6 +43,10 @@ export class UsuarioService {
   }
 
   updateUsuario(usuario: Usuario): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(usuario))
+    };
     return this.http.put(apiUrl, usuario, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${usuario.id}`)),
       catchError(this.handleError<any>('updateUsuario'))
@@ -49,6 +54,10 @@ export class UsuarioService {
   }
 
   deleteUsuario (usuario: Usuario): Observable<Usuario> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(usuario))
+    };
     const url = `${apiUrl}/${usuario.id}`;
 
     return this.http.delete<Usuario>(url, httpOptions).pipe(

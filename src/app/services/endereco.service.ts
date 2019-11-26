@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Endereco } from 'app/model/endereco';
+import { HttpModule } from '@angular/http';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 const apiUrl = 'http://localhost:8080/MyLab/api/endereco';
 
 @Injectable({
@@ -21,7 +18,7 @@ export class EnderecoService {
     return this.http.get<Endereco[]>(apiUrl)
       .pipe(
         tap(enderecos => console.log('leu os enderecos')),
-        catchError(this.handleError('getEndereco', []))
+        catchError(this.handleError('getEnderecos', []))
       );
   }
 
@@ -34,6 +31,10 @@ export class EnderecoService {
   }
 
   addEndereco (endereco: Endereco): Observable<Endereco> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(endereco))
+    };
     return this.http.post<Endereco>(apiUrl, endereco, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((endereco: Endereco) => console.log(`adicionou o endereco com w/ id=${endereco.id}`)),
@@ -42,6 +43,10 @@ export class EnderecoService {
   }
 
   updateEndereco(endereco: Endereco): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(endereco))
+    };
     return this.http.put(apiUrl, endereco, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${endereco.id}`)),
       catchError(this.handleError<any>('updateEndereco'))
@@ -49,6 +54,10 @@ export class EnderecoService {
   }
 
   deleteEndereco (endereco: Endereco): Observable<Endereco> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(endereco))
+    };
     const url = `${apiUrl}/${endereco.id}`;
 
     return this.http.delete<Endereco>(url, httpOptions).pipe(

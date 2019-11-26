@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Cidade } from 'app/model/cidade';
+import { HttpModule } from '@angular/http';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 const apiUrl = 'http://localhost:8080/MyLab/api/cidade';
 
 @Injectable({
@@ -21,7 +18,7 @@ export class CidadeService {
     return this.http.get<Cidade[]>(apiUrl)
       .pipe(
         tap(cidades => console.log('leu os cidades')),
-        catchError(this.handleError('getCidade', []))
+        catchError(this.handleError('getCidades', []))
       );
   }
 
@@ -34,6 +31,10 @@ export class CidadeService {
   }
 
   addCidade (cidade: Cidade): Observable<Cidade> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(cidade))
+    };
     return this.http.post<Cidade>(apiUrl, cidade, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((cidade: Cidade) => console.log(`adicionou o cidade com w/ id=${cidade.id}`)),
@@ -42,6 +43,10 @@ export class CidadeService {
   }
 
   updateCidade(cidade: Cidade): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(cidade))
+    };
     return this.http.put(apiUrl, cidade, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${cidade.id}`)),
       catchError(this.handleError<any>('updateCidade'))
@@ -49,6 +54,10 @@ export class CidadeService {
   }
 
   deleteCidade (cidade: Cidade): Observable<Cidade> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      params: new HttpParams().append('dado', JSON.stringify(cidade))
+    };
     const url = `${apiUrl}/${cidade.id}`;
 
     return this.http.delete<Cidade>(url, httpOptions).pipe(
