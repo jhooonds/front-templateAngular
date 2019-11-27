@@ -5,7 +5,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { Amostra } from 'app/model/amostra';
 import { HttpModule } from '@angular/http';
 
-const apiUrl = 'http://localhost:8080/MyLab/api/amostra';
+const apiUrl = 'http://10.10.102.242:8080/MyLab/api/amostra';
 
 @Injectable({
   providedIn: 'root'

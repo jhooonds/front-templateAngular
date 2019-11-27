@@ -6,8 +6,10 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../clientes/user-profile.component';
 import { ClientesAddComponent } from '../../clientes/clientes-add/clientes-add.component'
+import { ClientesEditComponent } from '../../clientes/clientes-edit/clientes-edit.component'
 import { AmostrasComponent } from '../../amostras/amostras.component';
 import { AmostrasAddComponent } from '../../amostras/amostras-add/amostras-add.component';
+import { AmostrasEditComponent } from '../../amostras/amostras-edit/amostras-edit.component';
 import { EquipamentosComponent } from '../../equipamentos/equipamentos.component';
 import { EquipamentosAddComponent } from '../../equipamentos/equipamentos-add/equipamentos-add.component';
 
@@ -39,8 +41,10 @@ import {
     DashboardComponent,
     UserProfileComponent,
     ClientesAddComponent,
+    ClientesEditComponent,
     AmostrasComponent,
     AmostrasAddComponent,
+    AmostrasEditComponent,
     EquipamentosComponent,
     EquipamentosAddComponent,
   ]

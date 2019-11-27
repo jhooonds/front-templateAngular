@@ -19,6 +19,11 @@ export class AmostrasComponent implements OnInit {
 newAmostra() {
   this.router.navigate(['/amostras-add'])
 }
+
+editAmostra(){
+  this.router.navigate(['/amostras-edit'])
+}
+
   ngOnInit() {
     this._api.getAmostras()
     .subscribe(res =>

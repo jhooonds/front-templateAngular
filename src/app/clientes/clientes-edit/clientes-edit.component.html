@@ -1,0 +1,98 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Editar Cliente</h4>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field>
+                  <mat-label>Selecione Tipo Cliente</mat-label>
+                  <select matNativeControl id="mySelectId">
+                    <option value="" disabled selected></option>
+                    <option value="cliente1">Juridica</option>
+                    <option value="cliente1">Fisica</option>
+                  </select>
+                </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Nome" name="clienteNome" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Email" name="clienteEmail" type="text">
+                  </mat-form-field>
+                </div>
+                <!-- <div class="col-md-4">
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                  </mat-form-field>                  
+                </div> -->
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="CPF" name="clienteCpf" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field>
+                    <mat-label>Estado</mat-label>
+                    <select matNativeControl required>
+                      <option value="br">SC</option>
+                    </select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field>
+                    <mat-label>Cidade</mat-label>
+                    <select matNativeControl required>
+                      <option value="city">Florianópolis</option>
+                    </select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="CEP" name="clienteCEP" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Rua" name="clienteLogradouro" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="N°" name="clienteNumero" type="text">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Complemento" name="clienteComplemento" type="text">
+                      </mat-form-field>
+                    </div>
+              </div>
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right">
+                <i class="material-icons">send</i> SALVAR</button>
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="backList()">
+                <i class="material-icons">backspace</i> CANCELAR</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

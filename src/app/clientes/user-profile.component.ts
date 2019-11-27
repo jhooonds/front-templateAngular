@@ -14,6 +14,10 @@ export class UserProfileComponent implements OnInit {
       this.router.navigate(['/clientes-add'])
   }
 
+  editAmostra() {
+    this.router.navigate(['/clientes-edit'])
+  }
+
   ngOnInit() {
   }
 
