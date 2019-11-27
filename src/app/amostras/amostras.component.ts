@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AmostraService } from '../services/amostra.service'
 import { Amostra } from 'app/model/amostra';
 import { Cliente } from 'app/model/cliente';
+import { Endereco } from 'app/model/endereco';
 
 @Component({
   selector: 'app-amostras',
@@ -25,7 +26,10 @@ newAmostra() {
   }
 
   formataCliente(cliente: Cliente){
-   // return cliente.pessoa.nome +  ' - ' +  cliente.codigo;
-   return 'test';
+   return cliente.pessoa.nome +  ' - ' +  cliente.codigo;
   }
+
+  formataEndereco(endereco: Endereco){
+    return endereco.logradouro +  ', ' +  endereco.numero;
+   }
 }
