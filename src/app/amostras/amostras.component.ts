@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { AmostraService } from '../services/amostra.service'
 import { Amostra } from 'app/model/amostra';
 import { Cliente } from 'app/model/cliente';
@@ -20,8 +20,13 @@ newAmostra() {
   this.router.navigate(['/amostras-add'])
 }
 
-editAmostra(){
-  this.router.navigate(['/amostras-edit'])
+editAmostra(amostra: Amostra){
+  let navigationExtras: NavigationExtras = {
+    queryParams: {
+        "amostra": JSON.stringify(amostra)
+    }
+  };
+  this.router.navigate(['/amostras-edit'], navigationExtras);
 }
 
   ngOnInit() {

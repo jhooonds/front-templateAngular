@@ -12,19 +12,19 @@
                 <div class="col-md-5">
                     <mat-form-field>
                         <mat-label>Selecione o Cliente</mat-label>
-                        <select name="cliente" matNativeControl id="mySelectId">
-                          <option ></option>
+                        <select [(ngModel)]="cliente" name="cliente" matNativeControl id="mySelectId">
+                          <option *ngFor="let c of clientes" [ngValue]="c" [selected]="c.id === cliente.id">{{ c.pessoa.nome }}</option>
                         </select>
                       </mat-form-field>
                 </div>
                 <div class="col-md-3">
                   <mat-form-field class="example-full-width">
-                    <input name="amostraCodigo" matInput placeholder="Codigo">
+                    <input [(ngModel)]="amostra.codigo" name="amostraCodigo" matInput placeholder="Codigo">
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input  name="amostraCodigo" matInput placeholder="Data coleta"
+                    <input [(ngModel)]="amostra.dt_amostra" name="amostraCodigo" matInput placeholder="Data coleta"
                       type="email">
                   </mat-form-field>
                 </div>
@@ -33,41 +33,41 @@
                 <div class="col-md-4">
                     <mat-form-field>
                         <mat-label>Estado</mat-label>
-                        <select  name="estado" matNativeControl required >
-                          <option ></option>
+                        <select [(ngModel)]="estado" name="estado" matNativeControl required >
+                          <option *ngFor="let e of estados" [ngValue]="e" [selected]="e.id === estado.id">{{ e.nome }}</option>
                         </select>
                       </mat-form-field>
                 </div>
                 <div class="col-md-4">
                     <mat-form-field>
                         <mat-label>Cidade</mat-label>
-                        <select  name="cidade" matNativeControl required >
-                          <option *ngFor="let c of cidades" [ngValue]="c">{{ c.nome }}</option>
+                        <select [(ngModel)]="cidade" name="cidade" matNativeControl required >
+                          <option *ngFor="let c of cidades" [ngValue]="c" [selected]="c.id === cidade.id">{{ c.nome }}</option>
                         </select>
                       </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input  name="amostraCep" matInput placeholder="CEP" type="text">
+                    <input [(ngModel)]="amostra.endereco.cep" name="amostraCep" matInput placeholder="CEP" type="text">
                   </mat-form-field>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-8">
                   <mat-form-field class="example-full-width">
-                    <input  name="amostraLogradouro" matInput
+                    <input [(ngModel)]="amostra.endereco.logradouro" name="amostraLogradouro" matInput
                       placeholder="Logradouro" type="text">
                   </mat-form-field>
                 </div>
                 <div class="col-md-2">
                   <mat-form-field class="example-full-width">
-                    <input  name="amostraComplemento" matInput
+                    <input [(ngModel)]="amostra.endereco.complemento" name="amostraComplemento" matInput
                       placeholder="Complemento" type="text">
                   </mat-form-field>
                 </div>
                 <div class="col-md-2">
                   <mat-form-field class="example-full-width">
-                    <input  name="amostraNumero" matInput placeholder="Número"
+                    <input [(ngModel)]="amostra.endereco.numero" name="amostraNumero" matInput placeholder="Número"
                       type="text">
                   </mat-form-field>
                 </div>
@@ -75,14 +75,14 @@
               <div class="row">
                 <div class="col-md-12">
                   <mat-form-field class="example-full-width">
-                    <input  name="amostraObservacao" matInput
+                    <input [(ngModel)]="amostra.observacao" name="amostraObservacao" matInput
                       placeholder="Observação" type="text">
                   </mat-form-field>
                 </div>
               </div>
-              <button mat-raised-button type="submit" class="btn btn-danger pull-right" >
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="editaAmostra()">
                 <i class="material-icons">send</i> SALVAR</button>
-              <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="backList()">
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="backInitial()">
                 <i class="material-icons">backspace</i> CANCELAR</button>
               <div class="clearfix"></div>
             </form>

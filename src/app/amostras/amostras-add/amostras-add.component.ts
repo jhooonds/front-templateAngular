@@ -56,13 +56,12 @@ export class AmostrasAddComponent implements OnInit {
     this.amostra.cliente = this.cliente;
     this.amostra.endereco.cidade = this.cidade;
 
-    this.apiAmostra.addAmostra(this.amostra);
       this.apiAmostra.addAmostra(this.amostra)
-        .subscribe(res => {
-            console.log(res);
-          }, (err) => {
-            console.log(err);
-          });
+      .subscribe(res => {
+          console.log(res);
+        }, (err) => {
+          console.log(err);
+        });
 
   }
 
