@@ -34,7 +34,7 @@
                     <mat-form-field>
                         <mat-label>Estado</mat-label>
                         <select [(ngModel)]="estado" name="estado" matNativeControl required >
-                          <option *ngFor="let e of estados" [ngValue]="e" [selected]="e.id === estado.id">{{ e.nome }}</option>
+                          <option *ngFor="let e of estados" [ngValue]="e">{{ e.nome }}</option>
                         </select>
                       </mat-form-field>
                 </div>

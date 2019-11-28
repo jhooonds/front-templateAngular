@@ -40,8 +40,11 @@ export class AmostrasEditComponent implements OnInit {
         .subscribe(res =>
           this.cidades = res);
         this.apiEstado.getEstados()
-        .subscribe(res =>
-          this.estados = res)
+        .subscribe(res => {
+          this.estados = res;
+          this.estados.unshift(this.estado);
+        });
+          
           this.apiCliente.getClientes()
         .subscribe(res =>
           this.clientes = res)
