@@ -9,31 +9,31 @@
           <div class="card-body">
             <form>
               <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-6">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Nome" name="equipNome" type="text">
+                    <input [(ngModel)]="equipamento.nome" name="equipamentoNome" matInput placeholder="Nome" type="text">
                   </mat-form-field>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Serial" name="equipSerial" type="text">
-                  </mat-form-field>
-                </div>
-                <div class="col-md-2">
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Firmware Version" name="equipFw" type="text">
+                    <input [(ngModel)]="equipamento.serial" name="equipamentoSerial" matInput placeholder="Serial" type="text">
                   </mat-form-field>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Hardware Version" name="equipHw" type="text">
+                    <input [(ngModel)]="equipamento.hw_version" name="equipamentoHw" matInput placeholder="Hardware Version" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="equipamento.fw_version" name="equipamentoFw" matInput placeholder="Firmware Version" type="text">
                   </mat-form-field>
                 </div>
               </div>
               <div>
-                <button mat-raised-button type="submit" class="btn btn-danger pull-right">
+                <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)=enviarEquipamento()>
                   <i class="material-icons">send</i> SALVAR</button>
                 <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="backList()">
                   <i class="material-icons">backspace</i> CANCELAR</button>

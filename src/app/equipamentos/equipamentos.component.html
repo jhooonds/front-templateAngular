@@ -32,21 +32,25 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr *ngFor="let e of dataSource">
                                         <td>
+                                            {{e.nome}}
                                         </td>
                                         <td>
-                                        </td>   
-                                        <td>                                            
-                                        </td> 
-                                        <td>                                            
-                                        </td>                                    
+                                            {{e.serial}}
+                                        </td>
+                                        <td>
+                                            {{e.hw_version}}
+                                        </td>
+                                        <td>
+                                            {{e.fw_version}}
+                                        </td>
                                         <td>
                                             <button mat-raised-button type="button" matTooltip="Editar "
-                                                [matTooltipPosition]="'above'"
-                                                class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons">edit</i>
-                                            </button>
+                                            [matTooltipPosition]="'above'"
+                                            class="btn btn-primary btn-link btn-sm btn-just-icon" (click)="editEquipamento(e)">
+                                            <i class="material-icons">edit</i>
+                                        </button>
                                         </td>
                                     </tr>
                                 </tbody>

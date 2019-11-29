@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
-import { UserProfileComponent } from '../../clientes/user-profile.component';
+import { ClientesComponent } from '../../clientes/clientes.component';
 import { ClientesAddComponent } from '../../clientes/clientes-add/clientes-add.component'
 import { ClientesEditComponent } from '../../clientes/clientes-edit/clientes-edit.component'
 import { AmostrasComponent } from '../../amostras/amostras.component';
@@ -39,7 +39,7 @@ import {
   ],
   declarations: [
     DashboardComponent,
-    UserProfileComponent,
+    ClientesComponent,
     ClientesAddComponent,
     ClientesEditComponent,
     AmostrasComponent,

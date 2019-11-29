@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router, NavigationExtras } from "@angular/router";
+import { Equipamento } from "app/model/equipamento";
+import { EquipamentoService } from "app/services/equipamento.service";
 
 @Component({
   selector: "app-equipamentos",
@@ -7,11 +9,26 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ["./equipamentos.component.scss"]
 })
 export class EquipamentosComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  dataSource: Equipamento[];
+
+  constructor(private route: ActivatedRoute, private router: Router, private apiEquipamento: EquipamentoService) {}
 
   newEquip() {
     this.router.navigate(["/equipamentos-add"]);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.apiEquipamento.getEquipamentos().subscribe( 
+      res => this.dataSource = res
+    )
+  }
+
+  editEquipamento(equipamento: Equipamento) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "equipamento": JSON.stringify(equipamento)
+      }
+    }
+      // this.router.navigate('[/equipamentos-edit'], navigationExtras);
+  }
 }

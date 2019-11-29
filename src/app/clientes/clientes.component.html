@@ -1,7 +1,7 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <button mat-raised-button color="warn" type="submit" (click)="newClient()">Novo Cliente
+            <button mat-raised-button color="warn" type="submit" (click)="newCliente()">Novo Cliente
                 <i class="material-icons">add_circle</i>
             </button>
         </div>
@@ -16,6 +16,9 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
+                                        Codigo
+                                    </th>
+                                    <th>
                                         Nome
                                     </th>
                                     <th>
@@ -29,19 +32,25 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr *ngFor="let c of dataSource">
                                         <td>
+                                            {{c.codigo}}
                                         </td>
                                         <td>
+                                            {{c.pessoa.nome}}
                                         </td>
                                         <td>
+                                            {{c.pessoa.telefone}}
                                         </td>
                                         <td>
-                                                <button mat-raised-button type="button" matTooltip="Editar "
-                                                [matTooltipPosition]="'above'"
-                                                class="btn btn-primary btn-link btn-sm btn-just-icon" (click)="editAmostra()">
-                                                <i class="material-icons">edit</i>
-                                            </button>
+                                            {{c.pessoa.email}}
+                                        </td>
+                                        <td>
+                                            <button mat-raised-button type="button" matTooltip="Editar "
+                                            [matTooltipPosition]="'above'"
+                                            class="btn btn-primary btn-link btn-sm btn-just-icon" (click)="editCliente(c)">
+                                            <i class="material-icons">edit</i>
+                                        </button>
                                         </td>
                                     </tr>
                                 </tbody>

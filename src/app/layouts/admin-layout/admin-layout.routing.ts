@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '../../dashboard/dashboard.component';
-import { UserProfileComponent } from '../../clientes/user-profile.component';
+import { ClientesComponent } from '../../clientes/clientes.component';
 import { ClientesAddComponent } from '../../clientes/clientes-add/clientes-add.component';
 import { ClientesEditComponent } from '../../clientes/clientes-edit/clientes-edit.component';
 import { AmostrasComponent } from '../../amostras/amostras.component';
@@ -13,7 +13,7 @@ import { AmostrasAddComponent } from 'app/amostras/amostras-add/amostras-add.com
 export const AdminLayoutRoutes: Routes = [
 
     { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
+    { path: 'user-profile',   component: ClientesComponent },
     { path: 'clientes-add',   component: ClientesAddComponent },
     { path: 'clientes-edit',  component: ClientesEditComponent },
     { path: 'amostras',       component: AmostrasComponent },
