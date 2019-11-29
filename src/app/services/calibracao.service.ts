@@ -35,7 +35,8 @@ export class CalibracaoService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(calibracao))
     };
-    return this.http.post<Calibracao>(apiUrl, calibracao, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(calibracao));
+    return this.http.post<Calibracao>(apiUrl, body, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((calibracao: Calibracao) => console.log(`adicionou o calibracao com w/ id=${calibracao.id}`)),
       catchError(this.handleError<Calibracao>('addCalibracao'))
@@ -47,7 +48,8 @@ export class CalibracaoService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(calibracao))
     };
-    return this.http.put(apiUrl, calibracao, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(calibracao));
+    return this.http.put(apiUrl, body, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${calibracao.id}`)),
       catchError(this.handleError<any>('updateCalibracao'))
     );

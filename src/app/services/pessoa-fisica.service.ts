@@ -5,7 +5,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { PessoaFisica } from 'app/model/pessoa-fisica';
 import { HttpModule } from '@angular/http';
 
-const apiUrl = 'http://localhost:8080/MyLab/api/pessoaFisica';
+const apiUrl = 'http://localhost:8080/MyLab/api/pessoafisica';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +35,8 @@ export class PessoaFisicaService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(pessoaFisica))
     };
-    return this.http.post<PessoaFisica>(apiUrl, pessoaFisica, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(pessoaFisica));
+    return this.http.post<PessoaFisica>(apiUrl, body, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((pessoaFisica: PessoaFisica) => console.log(`adicionou o pessoaFisica com w/ id=${pessoaFisica.id}`)),
       catchError(this.handleError<PessoaFisica>('addPessoaFisica'))
@@ -47,7 +48,8 @@ export class PessoaFisicaService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(pessoaFisica))
     };
-    return this.http.put(apiUrl, pessoaFisica, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(pessoaFisica));
+    return this.http.put(apiUrl, body, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${pessoaFisica.id}`)),
       catchError(this.handleError<any>('updatePessoaFisica'))
     );

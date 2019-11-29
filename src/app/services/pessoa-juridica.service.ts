@@ -5,7 +5,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { PessoaJuridica } from 'app/model/pessoa-juridica';
 import { HttpModule } from '@angular/http';
 
-const apiUrl = 'http://localhost:8080/MyLab/api/pessoaJuridica';
+const apiUrl = 'http://localhost:8080/MyLab/api/pessoajuridica';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +35,8 @@ export class PessoaJuridicaService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(pessoaJuridica))
     };
-    return this.http.post<PessoaJuridica>(apiUrl, pessoaJuridica, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(pessoaJuridica));
+    return this.http.post<PessoaJuridica>(apiUrl, body, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((pessoaJuridica: PessoaJuridica) => console.log(`adicionou o pessoaJuridica com w/ id=${pessoaJuridica.id}`)),
       catchError(this.handleError<PessoaJuridica>('addPessoaJuridica'))
@@ -47,7 +48,8 @@ export class PessoaJuridicaService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(pessoaJuridica))
     };
-    return this.http.put(apiUrl, pessoaJuridica, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(pessoaJuridica));
+    return this.http.put(apiUrl, body, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${pessoaJuridica.id}`)),
       catchError(this.handleError<any>('updatePessoaJuridica'))
     );

@@ -35,7 +35,8 @@ export class TelaService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(tela))
     };
-    return this.http.post<Tela>(apiUrl, tela, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(tela));
+    return this.http.post<Tela>(apiUrl, body, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((tela: Tela) => console.log(`adicionou o tela com w/ id=${tela.id}`)),
       catchError(this.handleError<Tela>('addTela'))
@@ -47,7 +48,8 @@ export class TelaService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(tela))
     };
-    return this.http.put(apiUrl, tela, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(tela));
+    return this.http.put(apiUrl, body, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${tela.id}`)),
       catchError(this.handleError<any>('updateTela'))
     );

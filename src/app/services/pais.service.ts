@@ -35,7 +35,8 @@ export class PaisService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(pais))
     };
-    return this.http.post<Pais>(apiUrl, pais, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(pais));
+    return this.http.post<Pais>(apiUrl, body, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((pais: Pais) => console.log(`adicionou o pais com w/ id=${pais.id}`)),
       catchError(this.handleError<Pais>('addPais'))
@@ -47,7 +48,8 @@ export class PaisService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(pais))
     };
-    return this.http.put(apiUrl, pais, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(pais));
+    return this.http.put(apiUrl, body, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${pais.id}`)),
       catchError(this.handleError<any>('updatePais'))
     );

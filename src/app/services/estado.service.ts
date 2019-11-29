@@ -35,7 +35,8 @@ export class EstadoService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(estado))
     };
-    return this.http.post<Estado>(apiUrl, estado, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(estado));
+    return this.http.post<Estado>(apiUrl, body, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((estado: Estado) => console.log(`adicionou o estado com w/ id=${estado.id}`)),
       catchError(this.handleError<Estado>('addEstado'))
@@ -47,7 +48,8 @@ export class EstadoService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(estado))
     };
-    return this.http.put(apiUrl, estado, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(estado));
+    return this.http.put(apiUrl, body, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${estado.id}`)),
       catchError(this.handleError<any>('updateEstado'))
     );

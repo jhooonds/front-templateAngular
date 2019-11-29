@@ -35,7 +35,8 @@ export class CidadeService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(cidade))
     };
-    return this.http.post<Cidade>(apiUrl, cidade, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(cidade));
+    return this.http.post<Cidade>(apiUrl, body, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((cidade: Cidade) => console.log(`adicionou o cidade com w/ id=${cidade.id}`)),
       catchError(this.handleError<Cidade>('addCidade'))
@@ -47,7 +48,8 @@ export class CidadeService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(cidade))
     };
-    return this.http.put(apiUrl, cidade, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(cidade));
+    return this.http.put(apiUrl, body, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${cidade.id}`)),
       catchError(this.handleError<any>('updateCidade'))
     );

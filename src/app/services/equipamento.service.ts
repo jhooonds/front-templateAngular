@@ -35,7 +35,8 @@ export class EquipamentoService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(equipamento))
     };
-    return this.http.post<Equipamento>(apiUrl, equipamento, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(equipamento));
+    return this.http.post<Equipamento>(apiUrl, body, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((equipamento: Equipamento) => console.log(`adicionou o equipamento com w/ id=${equipamento.id}`)),
       catchError(this.handleError<Equipamento>('addEquipamento'))
@@ -47,7 +48,8 @@ export class EquipamentoService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(equipamento))
     };
-    return this.http.put(apiUrl, equipamento, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(equipamento));
+    return this.http.put(apiUrl, body, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${equipamento.id}`)),
       catchError(this.handleError<any>('updateEquipamento'))
     );

@@ -35,7 +35,8 @@ export class AmostraService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(amostra))
     };
-    return this.http.post<Amostra>(apiUrl, amostra, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(amostra));
+    return this.http.post<Amostra>(apiUrl, body, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((amostra: Amostra) => console.log(`adicionou o amostra com w/ id=${amostra.id}`)),
       catchError(this.handleError<Amostra>('addAmostra'))
@@ -47,7 +48,8 @@ export class AmostraService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(amostra))
     };
-    return this.http.put(apiUrl, amostra, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(amostra));
+    return this.http.put(apiUrl, body, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${amostra.id}`)),
       catchError(this.handleError<any>('updateAmostra'))
     );

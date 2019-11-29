@@ -35,7 +35,8 @@ export class EnderecoService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(endereco))
     };
-    return this.http.post<Endereco>(apiUrl, endereco, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(endereco));
+    return this.http.post<Endereco>(apiUrl, body, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((endereco: Endereco) => console.log(`adicionou o endereco com w/ id=${endereco.id}`)),
       catchError(this.handleError<Endereco>('addEndereco'))
@@ -47,7 +48,8 @@ export class EnderecoService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(endereco))
     };
-    return this.http.put(apiUrl, endereco, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(endereco));
+    return this.http.put(apiUrl, body, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${endereco.id}`)),
       catchError(this.handleError<any>('updateEndereco'))
     );

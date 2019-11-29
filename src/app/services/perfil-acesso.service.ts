@@ -5,7 +5,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { PerfilAcesso } from 'app/model/perfil-acesso';
 import { HttpModule } from '@angular/http';
 
-const apiUrl = 'http://localhost:8080/MyLab/api/perfilAcesso';
+const apiUrl = 'http://localhost:8080/MyLab/api/perfilacesso';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +35,8 @@ export class PerfilAcessoService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(perfilAcesso))
     };
-    return this.http.post<PerfilAcesso>(apiUrl, perfilAcesso, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(perfilAcesso));
+    return this.http.post<PerfilAcesso>(apiUrl, body, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((perfilAcesso: PerfilAcesso) => console.log(`adicionou o perfilAcesso com w/ id=${perfilAcesso.id}`)),
       catchError(this.handleError<PerfilAcesso>('addPerfilAcesso'))
@@ -47,7 +48,8 @@ export class PerfilAcessoService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(perfilAcesso))
     };
-    return this.http.put(apiUrl, perfilAcesso, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(perfilAcesso));
+    return this.http.put(apiUrl, body, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${perfilAcesso.id}`)),
       catchError(this.handleError<any>('updatePerfilAcesso'))
     );

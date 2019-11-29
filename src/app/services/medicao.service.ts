@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
-import { Medicao } from 'app/model/medicao';
+import { Amostra } from 'app/model/medicao';
 import { HttpModule } from '@angular/http';
 
 const apiUrl = 'http://localhost:8080/MyLab/api/medicao';
@@ -10,59 +10,61 @@ const apiUrl = 'http://localhost:8080/MyLab/api/medicao';
 @Injectable({
   providedIn: 'root'
 })
-export class MedicaoService {
+export class AmostraService {
 
   constructor(private http: HttpClient) { }
 
-  getMedicaos (): Observable<Medicao[]> {
-    return this.http.get<Medicao[]>(apiUrl)
+  getAmostras (): Observable<Amostra[]> {
+    return this.http.get<Amostra[]>(apiUrl)
       .pipe(
         tap(medicaos => console.log('leu os medicaos')),
-        catchError(this.handleError('getMedicaos', []))
+        catchError(this.handleError('getAmostras', []))
       );
   }
 
-  getMedicao(id: number): Observable<Medicao> {
+  getAmostra(id: number): Observable<Amostra> {
     const url = `${apiUrl}/${id}`;
-    return this.http.get<Medicao>(url).pipe(
+    return this.http.get<Amostra>(url).pipe(
       tap(_ => console.log(`leu o medicao id=${id}`)),
-      catchError(this.handleError<Medicao>(`getMedicao id=${id}`))
+      catchError(this.handleError<Amostra>(`getAmostra id=${id}`))
     );
   }
 
-  addMedicao (medicao: Medicao): Observable<Medicao> {
+  addAmostra (medicao: Amostra): Observable<Amostra> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(medicao))
     };
-    return this.http.post<Medicao>(apiUrl, medicao, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(medicao));
+    return this.http.post<Amostra>(apiUrl, body, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
-      tap((medicao: Medicao) => console.log(`adicionou o medicao com w/ id=${medicao.id}`)),
-      catchError(this.handleError<Medicao>('addMedicao'))
+      tap((medicao: Amostra) => console.log(`adicionou o medicao com w/ id=${medicao.id}`)),
+      catchError(this.handleError<Amostra>('addAmostra'))
     );
   }
 
-  updateMedicao(medicao: Medicao): Observable<any> {
+  updateAmostra(medicao: Amostra): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(medicao))
     };
-    return this.http.put(apiUrl, medicao, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(medicao));
+    return this.http.put(apiUrl, body, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${medicao.id}`)),
-      catchError(this.handleError<any>('updateMedicao'))
+      catchError(this.handleError<any>('updateAmostra'))
     );
   }
 
-  deleteMedicao (medicao: Medicao): Observable<Medicao> {
+  deleteAmostra (medicao: Amostra): Observable<Amostra> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(medicao))
     };
     const url = `${apiUrl}/${medicao.id}`;
 
-    return this.http.delete<Medicao>(url, httpOptions).pipe(
+    return this.http.delete<Amostra>(url, httpOptions).pipe(
       tap(_ => console.log(`remove o medicao com id=${medicao.id}`)),
-      catchError(this.handleError<Medicao>('deleteMedicao'))
+      catchError(this.handleError<Amostra>('deleteAmostra'))
     );
   }
 

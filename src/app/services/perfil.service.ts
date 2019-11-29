@@ -35,7 +35,8 @@ export class PerfilService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(perfil))
     };
-    return this.http.post<Perfil>(apiUrl, perfil, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(perfil));
+    return this.http.post<Perfil>(apiUrl, body, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((perfil: Perfil) => console.log(`adicionou o perfil com w/ id=${perfil.id}`)),
       catchError(this.handleError<Perfil>('addPerfil'))
@@ -47,7 +48,8 @@ export class PerfilService {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       params: new HttpParams().append('dado', JSON.stringify(perfil))
     };
-    return this.http.put(apiUrl, perfil, httpOptions).pipe(
+    const body = new FormData().append('dado', JSON.stringify(perfil));
+    return this.http.put(apiUrl, body, httpOptions).pipe(
       tap(_ => console.log(`atualiza o produco com id=${perfil.id}`)),
       catchError(this.handleError<any>('updatePerfil'))
     );
