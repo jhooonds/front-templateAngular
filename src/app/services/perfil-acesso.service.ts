@@ -4,8 +4,9 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular
 import { catchError, tap, map } from 'rxjs/operators';
 import { PerfilAcesso } from 'app/model/perfil-acesso';
 import { HttpModule } from '@angular/http';
+import { Constantes } from 'app/util/constantes';
 
-const apiUrl = 'http://localhost:8080/MyLab/api/perfilacesso';
+const apiUrl = Constantes.API_ENDPOINT + 'perfilacesso';
 
 @Injectable({
   providedIn: 'root'

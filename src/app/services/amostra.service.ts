@@ -4,8 +4,9 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular
 import { catchError, tap, map } from 'rxjs/operators';
 import { Amostra } from 'app/model/amostra';
 import { HttpModule } from '@angular/http';
+import { Constantes } from 'app/util/constantes';
 
-const apiUrl = 'http://localhost:8080/MyLab/api/amostra';
+const apiUrl = Constantes.API_ENDPOINT + 'amostra';
 
 @Injectable({
   providedIn: 'root'

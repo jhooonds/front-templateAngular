@@ -4,8 +4,9 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular
 import { catchError, tap, map } from 'rxjs/operators';
 import { Medicao } from 'app/model/medicao';
 import { HttpModule } from '@angular/http';
+import { Constantes } from 'app/util/constantes';
 
-const apiUrl = 'http://localhost:8080/MyLab/api/medicao';
+const apiUrl = Constantes.API_ENDPOINT + 'medicao';
 
 @Injectable({
   providedIn: 'root'

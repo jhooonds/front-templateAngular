@@ -4,8 +4,9 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular
 import { catchError, tap, map } from 'rxjs/operators';
 import { Tela } from 'app/model/tela';
 import { HttpModule } from '@angular/http';
+import { Constantes } from 'app/util/constantes';
 
-const apiUrl = 'http://localhost:8080/MyLab/api/tela';
+const apiUrl = Constantes.API_ENDPOINT + 'tela';
 
 @Injectable({
   providedIn: 'root'
