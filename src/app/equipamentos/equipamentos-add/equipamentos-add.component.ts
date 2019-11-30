@@ -16,7 +16,7 @@ export class EquipamentosAddComponent implements OnInit {
     private router: Router, 
     private apiEquipamento: EquipamentoService) { }
 
-  backInitial(){
+    backList(){
     this.router.navigate(['/equipamentos']);
   }
 
