@@ -29,6 +29,6 @@ export class EquipamentosComponent implements OnInit {
         "equipamento": JSON.stringify(equipamento)
       }
     }
-      // this.router.navigate('[/equipamentos-edit'], navigationExtras);
+    this.router.navigate(['/equipamentos-edit'], navigationExtras);
   }
 }
