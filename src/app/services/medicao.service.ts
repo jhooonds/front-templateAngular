@@ -23,6 +23,14 @@ export class MedicaoService {
       );
   }
 
+  getCustomMedicaos (type: String, id: String): Observable<Medicao[]> {
+    return this.http.get<Medicao[]>(apiUrl+"/"+type+"/"+id)
+      .pipe(
+        tap(medicaos => console.log('leu os medicaos')),
+        catchError(this.handleError('getMedicaos', []))
+      );
+  }
+
   getMedicao(id: number): Observable<Medicao> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<Medicao>(url).pipe(

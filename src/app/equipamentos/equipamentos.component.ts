@@ -17,8 +17,13 @@ export class EquipamentosComponent implements OnInit {
     this.router.navigate(["/equipamentos-add"]);
   }
 
-  visualizarAmostras(){
-    this.router.navigate(['/medicao'])
+  visualizarAmostras(equipamento: Equipamento) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          "equipamento": JSON.stringify(equipamento)
+      }
+    };
+    this.router.navigate(['/medicao'],navigationExtras);
   }
 
   ngOnInit() {

@@ -20,8 +20,13 @@ newAmostra() {
   this.router.navigate(['/amostras-add'])
 }
 
-visualizarAmostras(){
-  this.router.navigate(['/medicao'])
+visualizarAmostras(amostra: Amostra) {
+  let navigationExtras: NavigationExtras = {
+    queryParams: {
+        "amostra": JSON.stringify(amostra)
+    }
+  };
+  this.router.navigate(['/medicao'],navigationExtras);
 }
 
 editAmostra(amostra: Amostra){
