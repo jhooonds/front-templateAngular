@@ -16,9 +16,6 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
-                                        Codigo
-                                    </th>
-                                    <th>
                                         Nome Equipamento
                                     </th>
                                     <th>
@@ -34,36 +31,29 @@
                                         Data Calibração
                                     </th>
                                     <th>
-                                        Visualizar
+                                        Valor
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let e of dataSource">
+                                    <tr *ngFor="let c of dataSource">
                                         <td>
-                                            {{e.codigo}}
+                                            {{c.equipamento.nome}}
                                         </td>
                                         <td>
-                                            {{e.equipamento.nome}}
+                                            {{c.equipamento.serial}}
                                         </td>
                                         <td>
-                                            {{e.equipamento.serial}}
+                                            {{c.equipamento.hw_version}}
                                         </td>
                                         <td>
-                                            {{e.equipamento.hw_version}}
+                                            {{c.equipamento.fw_version}}
                                         </td>   
                                         <td>
-                                            {{e.equipamento.fw_version}}
+                                            {{c.dt_calibracao}}
                                         </td>  
                                         <td>
-                                            {{e.dt_calibracao}}
-                                        </td>                                  
-                                        <td>
-                                            <button mat-raised-button type="button" matTooltip="Visualizar "
-                                            [matTooltipPosition]="'above'"
-                                            class="btn btn-primary btn-link btn-sm btn-just-icon" >
-                                            <i class="material-icons">visibility</i>
-                                        </button>
-                                        </td>
+                                            {{c.valor}}
+                                        </td> 
                                     </tr>
                                 </tbody>
                             </table>

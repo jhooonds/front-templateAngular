@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { Medicao } from 'app/model/medicao';
+import { MedicaoService } from 'app/services/medicao.service';
+import { Amostra } from 'app/model/amostra';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,8 +10,13 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  dataSource: Medicao[];
 
-  constructor() { }
+  constructor(private apiMedicao: MedicaoService) { }
+
+
+
+
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -66,6 +74,10 @@ export class DashboardComponent implements OnInit {
       seq2 = 0;
   };
   ngOnInit() {
+
+    this.apiMedicao.getMedicaos()
+    .subscribe(res =>
+      this.dataSource = res)
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
@@ -146,5 +158,10 @@ export class DashboardComponent implements OnInit {
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
   }
+
+  formataAmostra(amostra: Amostra){
+    return amostra.codigo + "/" + amostra.cliente.pessoa.nome;
+  }
+
 
 }
