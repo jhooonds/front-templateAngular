@@ -11,8 +11,10 @@ import { Amostra } from 'app/model/amostra';
 })
 export class DashboardComponent implements OnInit {
   dataSource: Medicao[];
+  agora = new Date();
 
-  constructor(private apiMedicao: MedicaoService) { }
+  constructor(private apiMedicao: MedicaoService) { 
+  }
 
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
@@ -73,8 +75,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
 
     this.apiMedicao.getMedicaos()
-    .subscribe(res =>
-      this.dataSource = res)
+    .subscribe(res => {
+      this.dataSource = res;
+      while(this.dataSource.length > 5){
+        this.dataSource.splice(6,1);
+      }
+    });
+    
+    
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
