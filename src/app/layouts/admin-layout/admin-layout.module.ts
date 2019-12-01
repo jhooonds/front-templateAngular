@@ -13,6 +13,9 @@ import { AmostrasEditComponent } from '../../amostras/amostras-edit/amostras-edi
 import { EquipamentosComponent } from '../../equipamentos/equipamentos.component';
 import { EquipamentosAddComponent } from '../../equipamentos/equipamentos-add/equipamentos-add.component';
 import { EquipamentosEditComponent } from '../../equipamentos/equipamentos-edit/equipamentos-edit.component';
+import { CalibracaoComponent } from '../../calibracao/calibracao.component';
+import { CalibracaoEditComponent } from '../../calibracao/calibracao-edit/calibracao-edit.component';
+import { CalibracaoAddComponent } from '../../calibracao/calibracao-add/calibracao-add.component';
 
 import {
   MatButtonModule,
@@ -48,7 +51,10 @@ import {
     AmostrasEditComponent,
     EquipamentosComponent,
     EquipamentosAddComponent,
-    EquipamentosEditComponent
+    EquipamentosEditComponent,
+    CalibracaoAddComponent,
+    CalibracaoEditComponent,
+    CalibracaoComponent
   ]
 })
 

@@ -12,6 +12,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/user-profile', title: 'Clientes',  icon: 'person', class: '' },
     { path: '/amostras', title: 'Amostras',  icon: 'content_paste', class: '' },
     { path: '/equipamentos', title: 'Equipamentos',  icon: 'build', class: '' },
+    { path: '/calibracao', title: 'Calibração', icon: 'event_note', class: '' }
 ];
 
 @Component({

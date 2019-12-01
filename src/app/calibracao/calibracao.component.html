@@ -1,3 +1,77 @@
-<p>
-  calibracao works!
-</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <button mat-raised-button color="warn" type="submit" (click)="novaCalibracao()">Nova Calibração
+                <i class="material-icons">add_circle</i>
+            </button>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Calibração</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Codigo
+                                    </th>
+                                    <th>
+                                        Nome Equipamento
+                                    </th>
+                                    <th>
+                                        Serial
+                                    </th>
+                                    <th>
+                                        Hardware Version
+                                    </th>
+                                    <th>
+                                        Firmware Version
+                                    </th>
+                                    <th>
+                                        Data Calibração
+                                    </th>
+                                    <th>
+                                        Visualizar
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let e of dataSource">
+                                        <td>
+                                            {{e.codigo}}
+                                        </td>
+                                        <td>
+                                            {{e.equipamento.nome}}
+                                        </td>
+                                        <td>
+                                            {{e.equipamento.serial}}
+                                        </td>
+                                        <td>
+                                            {{e.equipamento.hw_version}}
+                                        </td>   
+                                        <td>
+                                            {{e.equipamento.fw_version}}
+                                        </td>  
+                                        <td>
+                                            {{e.dt_calibracao}}
+                                        </td>                                  
+                                        <td>
+                                            <button mat-raised-button type="button" matTooltip="Visualizar "
+                                            [matTooltipPosition]="'above'"
+                                            class="btn btn-primary btn-link btn-sm btn-just-icon" >
+                                            <i class="material-icons">visibility</i>
+                                        </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
