@@ -5,7 +5,6 @@ import { ClientesComponent } from '../../clientes/clientes.component';
 import { ClientesAddComponent } from '../../clientes/clientes-add/clientes-add.component';
 import { ClientesEditComponent } from '../../clientes/clientes-edit/clientes-edit.component';
 import { CalibracaoComponent } from '../../calibracao/calibracao.component';
-import { CalibracaoAddComponent } from '../../calibracao/calibracao-add/calibracao-add.component';
 import { CalibracaoEditComponent } from '../../calibracao/calibracao-edit/calibracao-edit.component';
 import { AmostrasComponent } from '../../amostras/amostras.component';
 import { AmostrasEditComponent } from '../../amostras/amostras-edit/amostras-edit.component';
@@ -23,7 +22,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'clientes-add',   component: ClientesAddComponent },
     { path: 'clientes-edit',  component: ClientesEditComponent },
     { path: 'calibracao',     component: CalibracaoComponent },
-    { path: 'calibracao-add', component: CalibracaoAddComponent },
     { path: 'calibracao-edit', component: CalibracaoEditComponent },
     { path: 'amostras',       component: AmostrasComponent },
     { path: 'amostras-edit',  component: AmostrasEditComponent },

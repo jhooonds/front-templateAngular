@@ -15,7 +15,6 @@ import { EquipamentosAddComponent } from '../../equipamentos/equipamentos-add/eq
 import { EquipamentosEditComponent } from '../../equipamentos/equipamentos-edit/equipamentos-edit.component';
 import { CalibracaoComponent } from '../../calibracao/calibracao.component';
 import { CalibracaoEditComponent } from '../../calibracao/calibracao-edit/calibracao-edit.component';
-import { CalibracaoAddComponent } from '../../calibracao/calibracao-add/calibracao-add.component';
 import { MedicaoComponent } from '../../medicao/medicao.component';
 
 import {
@@ -53,7 +52,6 @@ import {
     EquipamentosComponent,
     EquipamentosAddComponent,
     EquipamentosEditComponent,
-    CalibracaoAddComponent,
     CalibracaoEditComponent,
     CalibracaoComponent,
     MedicaoComponent
