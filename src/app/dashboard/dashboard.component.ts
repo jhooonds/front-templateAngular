@@ -14,9 +14,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(private apiMedicao: MedicaoService) { }
 
-
-
-
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;

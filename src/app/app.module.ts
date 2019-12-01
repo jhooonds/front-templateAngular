@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MedicaoComponent } from './medicao/medicao.component';
 
 
 
@@ -33,7 +32,6 @@ import { MedicaoComponent } from './medicao/medicao.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    MedicaoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

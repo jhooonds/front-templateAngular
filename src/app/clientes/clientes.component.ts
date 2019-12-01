@@ -17,6 +17,10 @@ export class ClientesComponent implements OnInit {
       this.router.navigate(['/clientes-add'])
   }
 
+  visualizarAmostras() {
+    this.router.navigate(['/medicao'])
+  }
+
   editCliente(cliente: Cliente){
     let navigationExtras: NavigationExtras = {
       queryParams: {

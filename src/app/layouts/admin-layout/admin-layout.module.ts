@@ -16,6 +16,7 @@ import { EquipamentosEditComponent } from '../../equipamentos/equipamentos-edit/
 import { CalibracaoComponent } from '../../calibracao/calibracao.component';
 import { CalibracaoEditComponent } from '../../calibracao/calibracao-edit/calibracao-edit.component';
 import { CalibracaoAddComponent } from '../../calibracao/calibracao-add/calibracao-add.component';
+import { MedicaoComponent } from '../../medicao/medicao.component';
 
 import {
   MatButtonModule,
@@ -54,7 +55,8 @@ import {
     EquipamentosEditComponent,
     CalibracaoAddComponent,
     CalibracaoEditComponent,
-    CalibracaoComponent
+    CalibracaoComponent,
+    MedicaoComponent
   ]
 })
 
