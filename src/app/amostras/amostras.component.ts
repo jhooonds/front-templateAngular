@@ -20,6 +20,10 @@ newAmostra() {
   this.router.navigate(['/amostras-add'])
 }
 
+visualizarAmostras(){
+  this.router.navigate(['/medicao'])
+}
+
 editAmostra(amostra: Amostra){
   let navigationExtras: NavigationExtras = {
     queryParams: {

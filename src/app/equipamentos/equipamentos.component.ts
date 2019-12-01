@@ -17,6 +17,10 @@ export class EquipamentosComponent implements OnInit {
     this.router.navigate(["/equipamentos-add"]);
   }
 
+  visualizarAmostras(){
+    this.router.navigate(['/medicao'])
+  }
+
   ngOnInit() {
     this.apiEquipamento.getEquipamentos().subscribe( 
       res => this.dataSource = res
