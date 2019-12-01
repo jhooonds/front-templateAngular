@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { Cliente } from 'app/model/cliente';
 import { ClienteService } from 'app/services/cliente.service';
 
@@ -17,8 +17,13 @@ export class ClientesComponent implements OnInit {
       this.router.navigate(['/clientes-add'])
   }
 
-  editCliente() {
-    this.router.navigate(['/clientes-edit'])
+  editCliente(cliente: Cliente){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          "cliente": JSON.stringify(cliente)
+      }
+    };
+    this.router.navigate(['/clientes-edit'], navigationExtras);
   }
 
   ngOnInit() {

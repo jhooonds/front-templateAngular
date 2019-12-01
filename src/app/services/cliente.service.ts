@@ -5,6 +5,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { Cliente } from 'app/model/cliente';
 import { HttpModule } from '@angular/http';
 import { Constantes } from 'app/util/constantes';
+import { Pessoa } from 'app/model/pessoa';
 
 const apiUrl = Constantes.API_ENDPOINT + 'cliente';
 
@@ -31,10 +32,10 @@ export class ClienteService {
     );
   }
 
-  addCliente (cliente: Cliente): Observable<Cliente> {
+  addCliente (cliente: Cliente, pessoa: Pessoa, tipoPessoa: string): Observable<Cliente> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
-      params: new HttpParams().append('dado', JSON.stringify(cliente))
+      params: new HttpParams().append('dado', JSON.stringify(cliente)).append('pessoa', JSON.stringify(pessoa)).append('tipo', tipoPessoa)
     };
     const body = new FormData().append('dado', JSON.stringify(cliente));
     return this.http.post<Cliente>(apiUrl, body, httpOptions).pipe(
@@ -44,10 +45,10 @@ export class ClienteService {
     );
   }
 
-  updateCliente(cliente: Cliente): Observable<any> {
+  updateCliente(cliente: Cliente, pessoa: Pessoa, tipoPessoa: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
-      params: new HttpParams().append('dado', JSON.stringify(cliente))
+      params: new HttpParams().append('dado', JSON.stringify(cliente)).append('pessoa', JSON.stringify(pessoa)).append('tipo', tipoPessoa)
     };
     const body = new FormData().append('dado', JSON.stringify(cliente));
     return this.http.put(apiUrl, body, httpOptions).pipe(

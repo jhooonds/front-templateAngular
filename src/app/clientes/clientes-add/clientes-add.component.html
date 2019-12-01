@@ -12,23 +12,53 @@
                 <div class="col-md-4">
                   <mat-form-field>
                   <mat-label>Selecione Tipo Cliente</mat-label>
-                  <select matNativeControl id="mySelectId">
+                  <select  [(ngModel)]="personType" name="personType" matNativeControl id="mySelectId">
                     <option value="" disabled selected></option>
-                    <option value="cliente1">Juridica</option>
-                    <option value="cliente1">Fisica</option>
+                    <option value="juridica">Juridica</option>
+                    <option value="fisica" >Fisica</option>
                   </select>
                 </mat-form-field>
+                </div>
+                <div class="col-md-2">
+                  <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="cliente.codigo" matInput placeholder="Codigo" name="clienteCodigo" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3" *ngIf="personType === 'fisica'">
+                  <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="cpfCnpj" matInput placeholder="CPF" name="clienteCpfCnpj" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3" *ngIf="personType === 'juridica'">
+                  <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="cpfCnpj" matInput placeholder="CNPJ" name="clienteCpfCnpj" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3" *ngIf="personType === 'fisica'">
+                  <mat-form-field>
+                  <mat-label>Genero</mat-label>
+                  <select  [(ngModel)]="genero" name="genero" matNativeControl id="mySelectId">
+                    <option value="" disabled selected></option>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino" >Feminino</option>
+                  </select>
+                </mat-form-field>
+                </div>
+                <div class="col-md-3" *ngIf="personType === 'juridica'">
+                  <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="fantasia" matInput placeholder="Fantasia" name="clienteFantasia" type="text">
+                  </mat-form-field>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Nome" name="clienteNome" type="text">
+                    <input [(ngModel)]="nome" matInput placeholder="Nome" name="clienteNome" type="text">
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Email" name="clienteEmail" type="text">
+                    <input [(ngModel)]="email" matInput placeholder="Email" name="clienteEmail" type="text">
                   </mat-form-field>
                 </div>
                 <!-- <div class="col-md-4">
@@ -38,9 +68,14 @@
                     <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
                   </mat-form-field>                  
                 </div> -->
-                <div class="col-md-4">
+                <div class="col-md-2">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="CPF" name="clienteCpf" type="text">
+                    <input [(ngModel)]="telefone" matInput placeholder="Telefone" name="clienteTelefone" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-2">
+                  <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="data" matInput placeholder="Data Nasc." name="clienteData" type="text">
                   </mat-form-field>
                 </div>
               </div>
@@ -48,43 +83,43 @@
                 <div class="col-md-4">
                   <mat-form-field>
                     <mat-label>Estado</mat-label>
-                    <select matNativeControl required>
-                      <option value="br">SC</option>
+                    <select [(ngModel)]="estado" name="estado" matNativeControl required >
+                      <option *ngFor="let e of estados" [ngValue]="e">{{ e.nome }}</option>
                     </select>
                   </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <mat-form-field>
                     <mat-label>Cidade</mat-label>
-                    <select matNativeControl required>
-                      <option value="city">Florianópolis</option>
+                    <select [(ngModel)]="cidade" name="cidade" matNativeControl required >
+                      <option *ngFor="let c of cidades" [ngValue]="c">{{ c.nome }}</option>
                     </select>
                   </mat-form-field>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" >
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="CEP" name="clienteCEP" type="text">
+                    <input [(ngModel)]="endereco.cep" matInput placeholder="CEP" name="clienteCEP" type="text">
                   </mat-form-field>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Rua" name="clienteLogradouro" type="text">
+                    <input [(ngModel)]="endereco.logradouro" matInput placeholder="Logradouro" name="clienteLogradouro" type="text">
                   </mat-form-field>
                 </div>
                 <div class="col-md-3">
                     <mat-form-field class="example-full-width">
-                      <input matInput placeholder="N°" name="clienteNumero" type="text">
+                      <input [(ngModel)]="endereco.numero" matInput placeholder="N°" name="clienteNumero" type="text">
                     </mat-form-field>
                   </div>
                   <div class="col-md-3">
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Complemento" name="clienteComplemento" type="text">
+                        <input [(ngModel)]="endereco.complemento" matInput placeholder="Complemento" name="clienteComplemento" type="text">
                       </mat-form-field>
                     </div>
               </div>
-              <button mat-raised-button type="submit" class="btn btn-danger pull-right">
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="enviaCliente()">
                 <i class="material-icons">send</i> SALVAR</button>
               <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="backList()">
                 <i class="material-icons">backspace</i> CANCELAR</button>

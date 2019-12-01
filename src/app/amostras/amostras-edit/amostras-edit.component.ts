@@ -39,31 +39,32 @@ export class AmostrasEditComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.amostra = JSON.parse(params["amostra"]);
-      this.cidade = new Cidade();
-      this.estado = new Estado();
-      this.cliente = new Cliente();
-
-      this.apiCidade.getCidades()
-      .subscribe(res => {
-        this.cidades = res;
-        this.cidades.unshift(this.cidade);
-      });
-      this.apiEstado.getEstados()
-      .subscribe(res => {
-        this.estados = res;
-        this.estados.unshift(this.estado);
-      });
-        
-        this.apiCliente.getClientes()
-      .subscribe(res => {
-        this.clientes = res;
-        this.clientes.unshift(this.cliente);
-      });
-        
-      this.estado = this.amostra.endereco.cidade.estado;
-      this.cliente = this.amostra.cliente;
-      this.cidade = this.amostra.endereco.cidade;
     });
+    this.cidade = new Cidade();
+    this.estado = new Estado();
+    this.cliente = new Cliente();
+
+    this.apiCidade.getCidades()
+    .subscribe(res => {
+      this.cidades = res;
+      this.cidades.unshift(this.cidade);
+    });
+    this.apiEstado.getEstados()
+    .subscribe(res => {
+      this.estados = res;
+      this.estados.unshift(this.estado);
+    });
+      
+      this.apiCliente.getClientes()
+    .subscribe(res => {
+      this.clientes = res;
+      this.clientes.unshift(this.cliente);
+    });
+      
+    this.estado = this.amostra.endereco.cidade.estado;
+    this.cliente = this.amostra.cliente;
+    this.cidade = this.amostra.endereco.cidade;
+    
   }
 
   editaAmostra() {
