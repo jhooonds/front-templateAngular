@@ -12,6 +12,7 @@ import { AmostrasAddComponent } from '../../amostras/amostras-add/amostras-add.c
 import { AmostrasEditComponent } from '../../amostras/amostras-edit/amostras-edit.component';
 import { EquipamentosComponent } from '../../equipamentos/equipamentos.component';
 import { EquipamentosAddComponent } from '../../equipamentos/equipamentos-add/equipamentos-add.component';
+import { EquipamentosEditComponent } from '../../equipamentos/equipamentos-edit/equipamentos-edit.component';
 
 import {
   MatButtonModule,
@@ -47,6 +48,7 @@ import {
     AmostrasEditComponent,
     EquipamentosComponent,
     EquipamentosAddComponent,
+    EquipamentosEditComponent
   ]
 })
 

@@ -14,7 +14,6 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { HttpClientModule } from '@angular/common/http';
 
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
