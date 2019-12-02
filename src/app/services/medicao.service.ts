@@ -31,6 +31,22 @@ export class MedicaoService {
       );
   }
 
+  getWeekMedicoes (): Observable<any[]> {
+    return this.http.get<any[]>(apiUrl+"/week")
+      .pipe(
+        tap(medicaos => console.log('leu os medicaos')),
+        catchError(this.handleError('getMedicaos', []))
+      );
+  }
+
+  getMonthMedicoes (): Observable<any[]> {
+    return this.http.get<any[]>(apiUrl+"/month")
+      .pipe(
+        tap(medicaos => console.log('leu os medicaos')),
+        catchError(this.handleError('getMedicaos', []))
+      );
+  }
+
   getMedicao(id: number): Observable<Medicao> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<Medicao>(url).pipe(

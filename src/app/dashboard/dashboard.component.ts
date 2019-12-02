@@ -12,6 +12,9 @@ import { Amostra } from 'app/model/amostra';
 export class DashboardComponent implements OnInit {
   dataSource: Medicao[];
   agora = new Date();
+  weekValues: number[];
+  monthValues: number[];
+  aumentoOntem: number;
 
   constructor(private apiMedicao: MedicaoService) { 
   }
@@ -81,55 +84,59 @@ export class DashboardComponent implements OnInit {
         this.dataSource.splice(6,1);
       }
     });
-    
-    
-      /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
+
+    this.apiMedicao.getWeekMedicoes().subscribe(res => {
+      this.weekValues = res;
       const dataDailySalesChart: any = {
-          labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-          series: [
-              [12, 17, 7, 17, 23, 18, 38]
-          ]
-      };
+        labels: ['6', '5', '4', '3', '2', '1', '0'],
+        series: [
+            this.weekValues
+        ]
+    };
 
-     const optionsDailySalesChart: any = {
-          lineSmooth: Chartist.Interpolation.cardinal({
-              tension: 0
-          }),
-          low: 0,
-          high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-          chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
-      }
+    this.aumentoOntem = (this.weekValues[6]/this.weekValues[5] - 1)*100;
 
-      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+   const optionsDailySalesChart: any = {
+        lineSmooth: Chartist.Interpolation.cardinal({
+            tension: 0
+        }),
+        low: 0,
+        high: (this.weekValues.reduce((a, b)=>Math.max(a, b)) + 5), // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
+    }
 
-      this.startAnimationForLineChart(dailySalesChart);
+    var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
-
+    this.startAnimationForLineChart(dailySalesChart);
+    });
+    
+    
       /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
+      this.apiMedicao.getMonthMedicoes().subscribe( res => {
+          this.monthValues = res;
+          const dataCompletedTasksChart: any = {
+            labels: ['3', '2', '1', '0'],
+            series: [
+                this.monthValues
+            ]
+        };
 
-      const dataCompletedTasksChart: any = {
-          labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
-          series: [
-              [230, 750, 450, 300, 280, 240, 200, 190]
-          ]
-      };
+      const optionsCompletedTasksChart: any = {
+            lineSmooth: Chartist.Interpolation.cardinal({
+                tension: 0
+            }),
+            low: 0,
+            high: (this.monthValues.reduce((a, b)=>Math.max(a, b)) + 5), // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+            chartPadding: { top: 0, right: 0, bottom: 0, left: 0}
+        }
 
-     const optionsCompletedTasksChart: any = {
-          lineSmooth: Chartist.Interpolation.cardinal({
-              tension: 0
-          }),
-          low: 0,
-          high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-          chartPadding: { top: 0, right: 0, bottom: 0, left: 0}
-      }
+        var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
 
-      var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
-
-      // start animation for the Completed Tasks Chart - Line Chart
-      this.startAnimationForLineChart(completedTasksChart);
-
-
+        // start animation for the Completed Tasks Chart - Line Chart
+        this.startAnimationForLineChart(completedTasksChart);
+      });
+      
 
       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
