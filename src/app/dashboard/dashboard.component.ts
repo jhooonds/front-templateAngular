@@ -80,9 +80,6 @@ export class DashboardComponent implements OnInit {
     this.apiMedicao.getMedicaos()
     .subscribe(res => {
       this.dataSource = res;
-      while(this.dataSource.length > 5){
-        this.dataSource.splice(6,1);
-      }
     });
 
 
