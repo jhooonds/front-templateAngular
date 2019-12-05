@@ -13,13 +13,12 @@ import { EquipamentosAddComponent } from '../../equipamentos/equipamentos-add/eq
 import { EquipamentosEditComponent } from '../../equipamentos/equipamentos-edit/equipamentos-edit.component';
 import { AmostrasAddComponent } from 'app/amostras/amostras-add/amostras-add.component';
 import { MedicaoComponent } from '../../medicao/medicao.component';
-import { LoginComponent } from '../../login/login.component';
+
 
 
 
 export const AdminLayoutRoutes: Routes = [
-
-    { path: 'login',          component: LoginComponent },
+    
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: ClientesComponent },
     { path: 'clientes-add',   component: ClientesAddComponent },

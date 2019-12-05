@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 
-import { LoginComponent } from '../../login/login.component';
+
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { ClientesComponent } from '../../clientes/clientes.component';
 import { ClientesAddComponent } from '../../clientes/clientes-add/clientes-add.component'
@@ -58,7 +58,7 @@ import {
     CalibracaoEditComponent,
     CalibracaoComponent,
     MedicaoComponent,
-    LoginComponent
+    
   ]
 })
 

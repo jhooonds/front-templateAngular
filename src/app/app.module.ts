@@ -11,8 +11,7 @@ import { AppComponent } from './app.component';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -29,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    LoginComponent
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
