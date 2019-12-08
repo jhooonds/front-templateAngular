@@ -14,7 +14,12 @@ export class DashboardComponent implements OnInit {
   agora = new Date();
   weekValues: number[];
   monthValues: number[];
+  yearValues: number[];
   aumentoOntem: number;
+  amostraSemMedicao: any;
+  amostraThisMonth: any;
+  clienteMaxMedicoesNome: string;
+  clienteMaxMedicoesValue: string;
 
   constructor(private apiMedicao: MedicaoService) { 
   }
@@ -77,10 +82,24 @@ export class DashboardComponent implements OnInit {
   };
   ngOnInit() {
 
-    this.apiMedicao.getMedicaos()
+    this.apiMedicao.getLimitMedicaos(5)
     .subscribe(res => {
       this.dataSource = res;
     });
+
+    this.apiMedicao.getAmostraSemMedicoes().subscribe(res => {
+      this.amostraSemMedicao = res;
+    });
+
+    this.apiMedicao.getClienteMaxMedicao().subscribe(res => {
+      this.clienteMaxMedicoesNome = res[0];
+      this.clienteMaxMedicoesValue = res[1];
+    });
+
+    this.apiMedicao.getAmostraThisMonth().subscribe(res => {
+      this.amostraThisMonth = res;
+    })
+    
 
 
     this.apiMedicao.getWeekMedicoes().subscribe(res => {
@@ -93,13 +112,16 @@ export class DashboardComponent implements OnInit {
     };
 
     this.aumentoOntem = (this.weekValues[6]/this.weekValues[5] - 1)*100;
+    if (isNaN(this.aumentoOntem)){
+      this.aumentoOntem = 0;
+    }
 
    const optionsDailySalesChart: any = {
         lineSmooth: Chartist.Interpolation.cardinal({
             tension: 0
         }),
         low: 0,
-        high: (this.weekValues.reduce((a, b)=>Math.max(a, b)) + 5), // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        high: (this.weekValues.reduce((a, b)=>Math.max(a, b)) + 2), // creative tim: we recommend you to set the high sa the biggest value + something for a better look
         chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
     }
 
@@ -124,7 +146,7 @@ export class DashboardComponent implements OnInit {
                 tension: 0
             }),
             low: 0,
-            high: (this.monthValues.reduce((a, b)=>Math.max(a, b)) + 5), // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+            high: (this.monthValues.reduce((a, b)=>Math.max(a, b)) + 2), // creative tim: we recommend you to set the high sa the biggest value + something for a better look
             chartPadding: { top: 0, right: 0, bottom: 0, left: 0}
         }
 
@@ -136,36 +158,38 @@ export class DashboardComponent implements OnInit {
       
 
       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
-
-      var datawebsiteViewsChart = {
-        labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-        series: [
-          [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-
-        ]
-      };
-      var optionswebsiteViewsChart = {
-          axisX: {
-              showGrid: false
-          },
-          low: 0,
-          high: 1000,
-          chartPadding: { top: 0, right: 5, bottom: 0, left: 0}
-      };
-      var responsiveOptions: any[] = [
-        ['screen and (max-width: 640px)', {
-          seriesBarDistance: 5,
-          axisX: {
-            labelInterpolationFnc: function (value) {
-              return value[0];
+      this.apiMedicao.getYearMedicoes().subscribe ( res => {
+        this.yearValues = res;
+        var datawebsiteViewsChart = {
+          labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+          series: [
+            this.yearValues
+  
+          ]
+        };
+        var optionswebsiteViewsChart = {
+            axisX: {
+                showGrid: false
+            },
+            low: 0,
+            high: (this.yearValues.reduce((a, b)=>Math.max(a, b)) + 2),
+            chartPadding: { top: 0, right: 5, bottom: 0, left: 0}
+        };
+        var responsiveOptions: any[] = [
+          ['screen and (max-width: 640px)', {
+            seriesBarDistance: 5,
+            axisX: {
+              labelInterpolationFnc: function (value) {
+                return value[0];
+              }
             }
-          }
-        }]
-      ];
-      var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
-
-      //start animation for the Emails Subscription Chart
-      this.startAnimationForBarChart(websiteViewsChart);
+          }]
+        ];
+        var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
+  
+        //start animation for the Emails Subscription Chart
+        this.startAnimationForBarChart(websiteViewsChart);
+      });
   }
 
   formataAmostra(amostra: Amostra){

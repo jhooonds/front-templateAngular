@@ -31,8 +31,10 @@ export class EquipamentosEditComponent implements OnInit {
     this.apiEquipamento.updateEquipamento(this.equipamento).subscribe(
       res => {
           console.log(res);
+          this.router.navigate(['/equipamentos']);
         }, (err) => {
           console.log(err);
+          window.alert("Falha ao enviar");
       });
   }
 }

@@ -15,7 +15,7 @@
                     <i class="material-icons">mail</i>
                   </span>
                 </div>
-                <input type="email" class="form-control" placeholder="Entre com email">
+                <input [(ngModel)]="login" name="login" type="email" class="form-control" placeholder="Login">
               </div>
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -23,7 +23,7 @@
                     <i class="material-icons">lock_outline</i>
                   </span>
                 </div>
-                <input type="password" class="form-control" placeholder="Password...">
+                <input [(ngModel)]="senha" name="senha" type="password" class="form-control" placeholder="Senha">
               </div>
             </div>
             <div class="footer text-center ml-4">

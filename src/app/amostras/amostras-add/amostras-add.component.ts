@@ -59,8 +59,10 @@ export class AmostrasAddComponent implements OnInit {
       this.apiAmostra.addAmostra(this.amostra)
       .subscribe(res => {
           console.log(res);
+          this.router.navigate(['/amostras']);
         }, (err) => {
           console.log(err);
+          window.alert("Falha ao enviar");
         });
 
   }

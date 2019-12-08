@@ -1,58 +1,57 @@
 <div class="main-content">
   <div class="container-fluid">
       <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="col-lg-4 col-md-6 col-sm-6">
               <div class="card card-stats">
                   <div class="card-header card-header-warning card-header-icon">
                       <div class="card-icon">
                           <i class="material-icons">content_copy</i>
                       </div>
-                      <p class="card-category">Used Space</p>
-                      <h3 class="card-title">49/50
-                          <small>GB</small>
+                      <p class="card-category">Novas Amostra no mês</p>
+                      <h3 class="card-title">{{amostraThisMonth}} 
+                          <small>amostras</small>
                       </h3>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
-                          <i class="material-icons text-danger">warning</i>
-                          <a href="javascript:void(0)">Get More Space...</a>
+                        <i class="material-icons">access_time</i> atualizado em: {{ agora | date:'dd/MM/yyyy HH:mm:ss' }}
                       </div>
                   </div>
               </div>
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="col-lg-4 col-md-6 col-sm-6">
               <div class="card card-stats">
                   <div class="card-header card-header-success card-header-icon">
                       <div class="card-icon">
                           <i class="material-icons">store</i>
                       </div>
-                      <p class="card-category">Revenue</p>
-                      <h3 class="card-title">$34,245</h3>
+                      <p class="card-category">Cliente com mais medições</p>
+                      <h3 class="card-title">{{clienteMaxMedicoesNome}}: {{clienteMaxMedicoesValue}} <small>medições</small></h3>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
-                          <i class="material-icons">date_range</i> Last 24 Hours
+                        <i class="material-icons">access_time</i> atualizado em: {{ agora | date:'dd/MM/yyyy HH:mm:ss' }}
                       </div>
                   </div>
               </div>
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="col-lg-4 col-md-6 col-sm-6">
               <div class="card card-stats">
                   <div class="card-header card-header-danger card-header-icon">
                       <div class="card-icon">
                           <i class="material-icons">info_outline</i>
                       </div>
-                      <p class="card-category">Fixed Issues</p>
-                      <h3 class="card-title">75</h3>
+                      <p class="card-category">Amostras sem medições</p>
+                      <h3 class="card-title">{{ amostraSemMedicao }} <small>amostras</small></h3>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
-                          <i class="material-icons">local_offer</i> Tracked from Github
+                        <i class="material-icons">access_time</i> atualizado em: {{ agora | date:'dd/MM/yyyy HH:mm:ss' }}
                       </div>
                   </div>
               </div>
           </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
+          <!-- <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                   <div class="card-header card-header-info card-header-icon">
                       <div class="card-icon">
@@ -67,7 +66,7 @@
                       </div>
                   </div>
               </div>
-          </div>
+          </div> -->
       </div>
       <div class="row">
           <div class="col-md-4">
@@ -93,12 +92,12 @@
                       <div class="ct-chart" id="websiteViewsChart"></div>
                   </div>
                   <div class="card-body">
-                      <h4 class="card-title">Email Subscriptions</h4>
-                      <p class="card-category">Last Campaign Performance</p>
+                      <h4 class="card-title">Medições no ano</h4>
+                      <p class="card-category">Medições realizadas por mês</p>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
-                          <i class="material-icons">access_time</i> campaign sent 2 days ago
+                          <i class="material-icons">access_time</i> atualizado em: {{ agora | date:'dd/MM/yyyy HH:mm:ss' }}
                       </div>
                   </div>
               </div>
@@ -109,12 +108,12 @@
                       <div class="ct-chart" id="completedTasksChart"></div>
                   </div>
                   <div class="card-body">
-                      <h4 class="card-title">Completed Tasks</h4>
-                      <p class="card-category">Last Campaign Performance</p>
+                      <h4 class="card-title">Medições no mês</h4>
+                      <p class="card-category">Realizadas nas ultimas 4 semanas</p>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
-                          <i class="material-icons">access_time</i> campaign sent 2 days ago
+                          <i class="material-icons">access_time</i> atualizado em: {{ agora | date:'dd/MM/yyyy HH:mm:ss' }}
                       </div>
                   </div>
               </div>
@@ -122,7 +121,7 @@
       </div>
       <div class="row">
           <div class="col-lg-6 col-md-12">
-              <div class="card">
+              <!-- <div class="card">
                   <div class="card-header card-header-tabs card-header-primary">
                       <div class="nav-tabs-navigation">
                           <div class="nav-tabs-wrapper">
@@ -364,9 +363,9 @@
                           </div>
                       </div>
                   </div>
-              </div>
+              </div> -->
           </div>
-          <div class="col-lg-6 col-md-12">
+          <div class="col-lg-12 col-md-12">
               <div class="card">
                   <div class="card-header card-header-warning">
                       <h4 class="card-title">Ultimas medições</h4>

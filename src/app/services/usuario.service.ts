@@ -31,6 +31,14 @@ export class UsuarioService {
     );
   }
 
+  getUsuarioForLogin(login: string): Observable<Usuario> {
+    const url = `${apiUrl}/login/${login}`;
+    return this.http.get<Usuario>(url).pipe(
+      tap(_ => console.log(`leu o usuario id=${login}`)),
+      catchError(this.handleError<Usuario>(`getUsuario id=${login}`))
+    );
+  }
+
   addUsuario (usuario: Usuario): Observable<Usuario> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),

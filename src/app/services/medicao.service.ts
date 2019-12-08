@@ -31,6 +31,16 @@ export class MedicaoService {
       );
   }
 
+  getLimitMedicaos (size: number): Observable<Medicao[]> {
+    return this.http.get<Medicao[]>(apiUrl+"/limit/"+size)
+      .pipe(
+        tap(medicaos => console.log('leu os medicaos')),
+        catchError(this.handleError('getMedicaos', []))
+      );
+  }
+
+
+
   getWeekMedicoes (): Observable<any[]> {
     return this.http.get<any[]>(apiUrl+"/week")
       .pipe(
@@ -39,8 +49,40 @@ export class MedicaoService {
       );
   }
 
+  getAmostraSemMedicoes (): Observable<any[]> {
+    return this.http.get<any[]>(apiUrl+"/amostra-med")
+      .pipe(
+        tap(medicaos => console.log('leu os medicaos')),
+        catchError(this.handleError('getMedicaos', []))
+      );
+  }
+
+  getAmostraThisMonth (): Observable<any[]> {
+    return this.http.get<any[]>(apiUrl+"/amostra-month")
+      .pipe(
+        tap(medicaos => console.log('leu os medicaos')),
+        catchError(this.handleError('getMedicaos', []))
+      );
+  }
+
+  getClienteMaxMedicao (): Observable<any[]> {
+    return this.http.get<any[]>(apiUrl+"/max-cliente-med")
+      .pipe(
+        tap(medicaos => console.log('leu os medicaos')),
+        catchError(this.handleError('getMedicaos', []))
+      );
+  }
+
   getMonthMedicoes (): Observable<any[]> {
     return this.http.get<any[]>(apiUrl+"/month")
+      .pipe(
+        tap(medicaos => console.log('leu os medicaos')),
+        catchError(this.handleError('getMedicaos', []))
+      );
+  }
+
+  getYearMedicoes (): Observable<any[]> {
+    return this.http.get<any[]>(apiUrl+"/year")
       .pipe(
         tap(medicaos => console.log('leu os medicaos')),
         catchError(this.handleError('getMedicaos', []))

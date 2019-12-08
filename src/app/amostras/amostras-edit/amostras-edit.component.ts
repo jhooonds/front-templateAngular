@@ -74,8 +74,10 @@ export class AmostrasEditComponent implements OnInit {
     this.apiAmostra.updateAmostra(this.amostra)
       .subscribe(res => {
           console.log(res);
+          this.router.navigate(['/amostras']);
         }, (err) => {
           console.log(err);
+          window.alert("Falha ao enviar");
         });
 
   }

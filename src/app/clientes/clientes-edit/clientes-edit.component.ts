@@ -57,8 +57,10 @@ export class ClientesEditComponent implements OnInit {
     this.apiCliente.updateCliente(this.cliente, this.cliente.pessoa, this.personType).subscribe (
       res => {
         console.log(res);
+        this.router.navigate(["/user-profile"]);
       }, (err) => {
         console.log(err);
+        window.alert("Falha ao enviar");
     });
 
   }
